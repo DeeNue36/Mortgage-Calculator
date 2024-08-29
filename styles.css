@@ -1,5 +1,63 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+:root {
+    --primary-color-one: hsl(61, 70%, 52%);
+    --primary-color-two: hsl(4, 69%, 50%);
+    --neutral: hsl(0, 0%, 100%);
+    --slate-one: hsl(202, 86%, 94%);
+    --slate-two: hsl(203, 41%, 72%);
+    --slate-three: hsl(200, 26%, 54%);
+    --slate-four: hsl(200, 24%, 40%);
+    --slate-five: hsl(202, 55%, 16%);
+    --p-font-size: 16px;
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html, body {
+    max-width: 100vw;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color:  var(--slate-one);
+    cursor:  default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.container {
+    background-color: var(--neutral);
+    display: flex;
+    width:  84vw;
+}
+
+.calculator {
+    width:  50%;
+    padding:  25px;
+}
+
+.heading {
+    display: flex;
+    justify-content:  space-between;
+    align-items: center;
+}
+
+#clear-calculator {
+    text-decoration: underline;
+    color: var(--slate-two);
+    cursor:  pointer;
+}
+
+.results {
+    width: 50%;
+    background-color: var(--slate-five);
+    border-bottom-left-radius:  25px;
 }
