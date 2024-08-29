@@ -36,11 +36,15 @@ body {
 .container {
     background-color: var(--neutral);
     display: flex;
+    /* * OR USE */
+    /* ? display:  grid;   */
+    /* ? grid-template-columns:  2fr 2fr; */
     width:  84vw;
+    border-radius:  16px;
 }
 
 .calculator {
-    width:  50%;
+    width:  50%;    /** Comment or Delete this to use 'display:grid' */
     padding:  25px;
 }
 
@@ -52,12 +56,37 @@ body {
 
 #clear-calculator {
     text-decoration: underline;
-    color: var(--slate-two);
+    color: var(--slate-four);
     cursor:  pointer;
+    align-self: end;
+    padding-bottom: 2px;
 }
 
 .results {
-    width: 50%;
+    width: 50%;   /** Comment or Delete this to use 'display:grid' */
     background-color: var(--slate-five);
-    border-bottom-left-radius:  25px;
+    border-top-right-radius:  16px;
+    border-bottom-right-radius:  16px;
+    border-bottom-left-radius:  64px;
+}
+
+.default-result {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.default-result img{
+    padding-bottom:  20px;
+}
+
+.default-result-header {
+    color:  var(--neutral);
+    padding-bottom:  20px;
+}
+
+.default-result-text {
+    color: var(--slate-three);
+    font-size:  var(--p-font-size);
 }
