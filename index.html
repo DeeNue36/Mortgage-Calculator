@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Mortgage Calculator</title>
 </head>
 <body>
@@ -14,10 +15,30 @@
     <div class="container">
 
         <div class="calculator">
+            <!-- * Form Heading & Clear Button -->
             <div class="heading">
                 <h2 class="header">Mortgage Calculator</h2>
                 <span id="clear-calculator">Clear All</span>
+                <!-- <input type="reset" value="Clear All" id="clear-calculator"> -->
             </div>
+
+            <!-- * Form  -->
+            <form class="user-inputs">
+
+                <div class="user-amount">
+                    <label for="amount" class="input-header">Mortgage Amount</label> 
+                    <br>
+                    <div class="currency-amount">
+                        <span class="currency-symbol">
+                            <i class="fa-solid fa-sterling-sign"></i>
+                        </span>
+                        <input type="number" required name="amount" class="amount" id="amount" >
+                    </div>
+                </div>
+
+                
+
+            </form>
 
         </div>
 
@@ -35,5 +56,6 @@
 
     </div>
     
+    <script src="mortgage.js"></script>
 </body>
 </html>
