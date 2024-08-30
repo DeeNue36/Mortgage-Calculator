@@ -44,7 +44,7 @@ body {
 }
 
 .calculator {
-    width:  50%;    /** Comment or Delete this to use 'display:grid' */
+    width:  50%;    /** Comment out or Delete this to use 'display:grid' */
     padding:  25px;
 }
 
@@ -62,8 +62,62 @@ body {
     padding-bottom: 2px;
 }
 
+.currency-amount {
+    display: flex;
+    align-items: center;
+    border-radius:  5px;
+    height:  32px;
+}
+
+.currency-symbol {
+    height: inherit;
+    background-color:  var(--slate-one);
+    padding: 5px 10px;
+    border:  1px solid var(--slate-four);
+    border-right: none;
+    border-top-left-radius:  5px;
+    border-bottom-left-radius:  5px;
+}
+
+.amount {
+    width: 100%;
+    border:  1px solid var(--slate-four);
+    border-top-right-radius:  5px;
+    border-bottom-right-radius:  5px;
+    font-family:  inherit;
+    font-size: var(--p-font-size);
+    font-weight:  700;
+    color: var(--slate-five);
+    outline:  0;
+    height:  32px;
+    padding:  0 16px;
+}
+
+/** Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/** Firefox */
+input[type = number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+
+.active-state-one{
+    background-color: var(--primary-color-one);
+    border:  1px solid var(--primary-color-one);
+}
+
+.active-state-two{
+    border:  1px solid var(--primary-color-one);
+}
+
 .results {
-    width: 50%;   /** Comment or Delete this to use 'display:grid' */
+    width: 50%;   /** Comment out or Delete this to use 'display:grid' */
     background-color: var(--slate-five);
     border-top-right-radius:  16px;
     border-bottom-right-radius:  16px;
