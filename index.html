@@ -13,6 +13,7 @@
 <body>
 
     <main class="container">
+        <!--* Mortgage Form & Calculator Section -->
         <section class="calculator">
             <!-- * Form Heading & Clear Button -->
             <div class="heading">
@@ -23,6 +24,7 @@
 
             <!-- * Form  -->
             <form class="user-inputs" autocomplete="on">
+                <!--* Mortgage Amount -->
                 <div class="user-amount">
                     <label for="input-amount" class="input-header">Mortgage Amount</label> 
                     <br>
@@ -34,6 +36,7 @@
                     </div>
                 </div>
 
+                <!--* Mortgage Duration(Years) & Rate(%) -->
                 <div class="duration-and-rate">
                     <div class="duration">
                         <label for="input-duration" class="input-header">Mortgage Term</label>
@@ -55,13 +58,25 @@
                     </div>
                 </div>
 
+                <!--* Mortgage Repayment Type -->
                 <div class="mortgage-type">
-                    <input type="radio" value="Repayment" name="radio-type" class="repayment" id="repayment">
-                    <label for="repayment" class="radio-label">Repayment</label>
+                    <header class="mortgage-type-header">Mortgage Type</header>
 
-                    <input type="radio" value="Interest Only" name="radio-type" class="interest-only" id="interest-only">
-                    <label for="interest-only" class="radio-label">Interest Only</label>
+                    <div class="repayment flex">
+                        <input type="radio" value="Repayment" name="radio-type" id="repayment" class="radio-input">
+                        <label for="repayment" class="radio-label">Repayment</label>
+                    </div>
+
+                    <div class="interest-only flex">
+                        <input type="radio" value="Interest Only" name="radio-type" id="interest-only" class="radio-input">
+                        <label for="interest-only" class="radio-label">Interest Only</label>
+                    </div>
                 </div>
+
+                <button type="submit" class="calculate-mortgage" id="calculate-mortgage">
+                    <img src="assets/images/icon-calculator.svg" alt="mortgage-calculator">
+                    Calculate Repayments
+                </button>
             </form>
         </section>
 
