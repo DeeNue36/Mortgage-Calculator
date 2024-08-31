@@ -52,3 +52,25 @@ document.body.addEventListener('click', (event) => {
         removeClasses();
     }
 });
+
+const radioRepayment = document.getElementById('repayment');
+const radioInterestOnly = document.getElementById('interest-only');
+
+// Common class for both radio inputs
+const radioInputs = document.querySelectorAll('.radio-input');
+
+radioInputs.forEach(radioInput => {
+    radioInput.addEventListener('change', (event) => {
+        radioInputs.forEach(input => {
+            if (input !== event.target) {
+                input.parentElement.style.border = '1px solid var(--slate-four)';
+                input.parentElement.style.backgroundColor = 'var(--neutral)';
+            }
+        });
+
+        if (event.target.checked) {
+            event.target.parentElement.style.border = '1px solid var(--primary-color-one)';
+            event.target.parentElement.style.backgroundColor = 'hsl(61deg 70% 52% / 30%)';
+        }
+    });
+});
