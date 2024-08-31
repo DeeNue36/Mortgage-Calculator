@@ -66,7 +66,7 @@ body {
     display: flex;
     align-items: center;
     border-radius:  5px;
-    height:  32px;
+    height:  34px;
 }
 
 .currency-symbol {
@@ -79,7 +79,7 @@ body {
     border-bottom-left-radius:  5px;
 }
 
-.amount {
+.input-amount {
     width: 100%;
     border:  1px solid var(--slate-four);
     border-top-right-radius:  5px;
@@ -88,8 +88,8 @@ body {
     font-size: var(--p-font-size);
     font-weight:  700;
     color: var(--slate-five);
-    outline:  0;
-    height:  32px;
+    outline:  none;
+    height:  34px;
     padding:  0 16px;
 }
 
@@ -106,14 +106,47 @@ input[type = number] {
     appearance: textfield;
 }
 
-
-.active-state-one{
-    background-color: var(--primary-color-one);
-    border:  1px solid var(--primary-color-one);
+.duration-and-rate{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
 }
 
-.active-state-two{
-    border:  1px solid var(--primary-color-one);
+.duration{
+    width: 45%;
+}
+
+.duration-value, .rate-value{
+    display: flex;
+    align-items: center;
+}
+
+.input-duration, .input-rate{
+    width: 100%;
+    height: 34px;
+    border: 1px solid var(--slate-four);
+    border-right: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding:  0 16px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: var(--p-font-size);
+    outline: none;
+}
+
+.term{
+    height: 34px;
+    background-color: var(--slate-one);
+    padding: 5px 10px;
+    border: 1px solid var(--slate-four);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.rate{
+    width: 55%;
 }
 
 .results {
@@ -143,4 +176,14 @@ input[type = number] {
 .default-result-text {
     color: var(--slate-three);
     font-size:  var(--p-font-size);
+}
+
+/** Form Active States  */
+.active-state-one{
+    background-color: var(--primary-color-one);
+    border:  1px solid var(--primary-color-one);
+}
+
+.active-state-two{
+    border:  1px solid var(--primary-color-one);
 }
