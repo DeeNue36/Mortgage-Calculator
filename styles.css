@@ -106,23 +106,23 @@ input[type = number] {
     appearance: textfield;
 }
 
-.duration-and-rate{
+.duration-and-rate {
     display: flex;
     justify-content: space-between;
     width: 100%;
     gap: 20px;
 }
 
-.duration{
+.duration {
     width: 45%;
 }
 
-.duration-value, .rate-value{
+.duration-value, .rate-value {
     display: flex;
     align-items: center;
 }
 
-.input-duration, .input-rate{
+.input-duration, .input-rate {
     width: 100%;
     height: 34px;
     border: 1px solid var(--slate-four);
@@ -136,7 +136,7 @@ input[type = number] {
     outline: none;
 }
 
-.term{
+.term {
     height: 34px;
     background-color: var(--slate-one);
     padding: 5px 10px;
@@ -145,10 +145,74 @@ input[type = number] {
     border-bottom-right-radius: 5px;
 }
 
-.rate{
+.rate {
     width: 55%;
 }
 
+.repayment {
+    margin-bottom: 16px;
+}
+
+.repayment, .interest-only {
+    width: 100%;
+    border: 1px solid var(--slate-four);
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+#repayment, #interest-only {
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    /** remove standard background appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /** create custom radio button appearance */
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    padding: 3px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    /** background-color only for inner content */
+    background-clip: content-box;
+}
+
+/** appearance for checked radio button */
+input[type="radio"]:checked {
+    border: 1px solid var(--primary-color-one);
+    background-color: var(--primary-color-one);
+}
+
+/** optional styles, I'm using this for centering radio buttons and label */
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.radio-label {
+    font-weight: 600;
+    font-size: var(--p-font-size);
+    padding-left: 10px;
+    text-align: center;
+}
+
+.calculate-mortgage{
+    outline: none;
+    border: none;
+    background-color: var(--primary-color-one);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 700;
+    padding: 10px 20px;  
+    border-radius: 25px;
+}
+
+/** Mortgage Results Section Styling */
 .results {
     width: 50%;   /** Comment out or Delete this to use 'display:grid' */
     background-color: var(--slate-five);
@@ -164,7 +228,7 @@ input[type = number] {
     padding: 80px 20px;
 }
 
-.default-result img{
+.default-result img {
     padding-bottom:  20px;
 }
 
@@ -179,11 +243,11 @@ input[type = number] {
 }
 
 /** Form Active States  */
-.active-state-one{
+.active-state-one {
     background-color: var(--primary-color-one);
     border:  1px solid var(--primary-color-one);
 }
 
-.active-state-two{
+.active-state-two {
     border:  1px solid var(--primary-color-one);
 }
