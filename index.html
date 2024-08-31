@@ -12,9 +12,8 @@
 </head>
 <body>
 
-    <div class="container">
-
-        <div class="calculator">
+    <main class="container">
+        <section class="calculator">
             <!-- * Form Heading & Clear Button -->
             <div class="heading">
                 <h2 class="header">Mortgage Calculator</h2>
@@ -23,26 +22,51 @@
             </div>
 
             <!-- * Form  -->
-            <form class="user-inputs">
-
+            <form class="user-inputs" autocomplete="on">
                 <div class="user-amount">
-                    <label for="amount" class="input-header">Mortgage Amount</label> 
+                    <label for="input-amount" class="input-header">Mortgage Amount</label> 
                     <br>
                     <div class="currency-amount">
                         <span class="currency-symbol">
                             <i class="fa-solid fa-sterling-sign"></i>
                         </span>
-                        <input type="number" required name="amount" class="amount" id="amount" >
+                        <input type="number" required name="amount" class="input-amount" id="input-amount" pattern="[0-9]{1,9}"/>
                     </div>
                 </div>
 
-                
+                <div class="duration-and-rate">
+                    <div class="duration">
+                        <label for="input-duration" class="input-header">Mortgage Term</label>
+                        <br>
+                        <div class="duration-value">
+                            <input type="number" required name="duration" class="input-duration" id="input-duration" pattern="[0-9]{1,5}">
+                            <span class="term" id="duration-term">years</span>
+                        </div>
+                    </div>
 
+                    <div class="rate">
+                        <label for="input-rate" class="input-header">Interest Rate</label>
+                        <br>
+                        <div class="rate-value">
+                            <input type="number" required name="rate" class="input-rate" id="input-rate" pattern="[0-9]{1,5}">
+                            <span class="term" id="rate-term">%</span>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="mortgage-type">
+                    <input type="radio" value="Repayment" name="radio-type" class="repayment" id="repayment">
+                    <label for="repayment" class="radio-label">Repayment</label>
+
+                    <input type="radio" value="Interest Only" name="radio-type" class="interest-only" id="interest-only">
+                    <label for="interest-only" class="radio-label">Interest Only</label>
+                </div>
             </form>
+        </section>
 
-        </div>
-
-        <div class="results">
+        <!--* Mortgage Results section -->
+        <section class="results">
             <div class="default-result">
                 <img src="assets/images/illustration-empty.svg" alt="Empty-result-image">
                 <h2 class="default-result-header">
@@ -52,9 +76,8 @@
                     Complete the form and click “calculate repayments” to see what your monthly repayment would be.
                 </p>
             </div>
-        </div>
-
-    </div>
+        </section>
+    </main>
     
     <script src="mortgage.js"></script>
 </body>
