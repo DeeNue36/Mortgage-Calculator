@@ -85,6 +85,19 @@ body {
     height:  34px;
 }
 
+.amount-in-currency:hover{
+    .currency-symbol, .input-amount{
+        border:  1px solid var(--slate-five);
+        cursor: pointer;
+    }
+    .currency-symbol{
+        border-right: none;
+    }
+    .input-amount{
+        border-left: none;
+    }
+}
+
 .currency-symbol {
     height: inherit;
     background-color:  var(--slate-one);
@@ -102,6 +115,7 @@ i.fa-solid.fa-sterling-sign {
 .input-amount {
     width: 100%;
     border:  1px solid var(--slate-four);
+    border-left: none;
     border-top-right-radius:  5px;
     border-bottom-right-radius:  5px;
     font-family:  inherit;
@@ -160,6 +174,19 @@ input[type = number] {
     outline: none;
 }
 
+.duration-value:hover, .rate-value:hover{
+    .input-duration, .input-rate, .term {
+        border: 1px solid var(--slate-five);
+        cursor:  pointer;
+    }
+    .input-duration, .input-rate{
+        border-right: none;
+    }
+    .term{
+        border-left: none;
+    }
+}
+
 .input-duration:focus, .input-rate:focus{
     border: 1px solid var(--primary-color-one);
 }
@@ -169,6 +196,7 @@ input[type = number] {
     background-color: var(--slate-one);
     padding: 5px 10px;
     border: 1px solid var(--slate-four);
+    border-left: none;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -179,7 +207,7 @@ input[type = number] {
 
 /** Mortgage Radio Inputs Styling */
 .repayment {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
 .repayment, .interest-only {
@@ -187,6 +215,11 @@ input[type = number] {
     border: 1px solid var(--slate-four);
     padding: 10px 15px;
     border-radius: 5px;
+}
+
+.repayment:hover, .interest-only:hover {
+    border: 1px solid var(--primary-color-one);
+    cursor: pointer;
 }
 
 #repayment, #interest-only {
@@ -241,6 +274,10 @@ input[type="radio"]:checked {
     padding: 10px 30px;  
     border-radius: 25px;
     cursor: pointer;
+}
+
+.calculate-mortgage:hover {
+    background-color: hsl(61deg 70% 52% / 60%);
 }
 
 .calculate-mortgage img {
