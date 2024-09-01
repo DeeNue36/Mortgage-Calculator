@@ -283,7 +283,7 @@ input[type="radio"]:checked {
 }
 
 /** Form Active States  */
-.active-state-one {
+.active-state{
     background-color: var(--primary-color-one);
     border:  1px solid var(--primary-color-one);
 }
