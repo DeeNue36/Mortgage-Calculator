@@ -33,15 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //* Function to remove active classes
 function removeClasses() {
-    if (inputAmount.classList.contains('input-amount')) {
-        currencySymbol.classList.remove('active-state');
-    }
-    if (inputDuration.classList.contains('input-duration')) {
-        durationTerm.classList.remove('active-state');
-    }
-    if (inputRate.classList.contains('input-rate')) {
-        rateTerm.classList.remove('active-state');
-    }
+    currencySymbol.classList.remove('active-state');
+    durationTerm.classList.remove('active-state');
+    rateTerm.classList.remove('active-state');
+    // if (inputAmount.classList.contains('input-amount')) {
+    //     currencySymbol.classList.remove('active-state');
+    // }
+    // if (inputDuration.classList.contains('input-duration')) {
+    //     durationTerm.classList.remove('active-state');
+    // }
+    // if (inputRate.classList.contains('input-rate')) {
+    //     rateTerm.classList.remove('active-state');
+    // }
 }
 
 //* Click event listener on body to remove classes
