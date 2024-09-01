@@ -28,11 +28,11 @@
                 <div class="user-amount">
                     <label for="input-amount" class="input-header">Mortgage Amount</label> 
                     <br>
-                    <div class="currency-amount">
+                    <div class="amount-in-currency">
                         <span class="currency-symbol">
                             <i class="fa-solid fa-sterling-sign"></i>
                         </span>
-                        <input type="number" required name="amount" class="input-amount" id="input-amount" pattern="[0-9]{1,9}"/>
+                        <input type="number" name="amount" class="input-amount" id="input-amount" pattern="[0-9]{1,9}" required/>
                     </div>
                 </div>
 
@@ -42,7 +42,7 @@
                         <label for="input-duration" class="input-header">Mortgage Term</label>
                         <br>
                         <div class="duration-value">
-                            <input type="number" required name="duration" class="input-duration" id="input-duration" pattern="[0-9]{1,5}">
+                            <input type="number" name="duration" class="input-duration" id="input-duration" pattern="[0-9]{1,5}" required>
                             <span class="term" id="duration-term">years</span>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                         <label for="input-rate" class="input-header">Interest Rate</label>
                         <br>
                         <div class="rate-value">
-                            <input type="number" required name="rate" class="input-rate" id="input-rate" pattern="[0-9]{1,5}">
+                            <input type="number" name="rate" class="input-rate" id="input-rate" pattern="[0-9]{1,5}" required>
                             <span class="term" id="rate-term">%</span>
                         </div>
                         
@@ -63,19 +63,19 @@
                     <header class="mortgage-type-header">Mortgage Type</header>
 
                     <div class="repayment flex">
-                        <input type="radio" value="Repayment" name="radio-type" id="repayment" class="radio-input">
+                        <input type="radio" value="Repayment" name="radio-type" id="repayment" class="radio-input" required>
                         <label for="repayment" class="radio-label">Repayment</label>
                     </div>
 
                     <div class="interest-only flex">
-                        <input type="radio" value="Interest Only" name="radio-type" id="interest-only" class="radio-input">
+                        <input type="radio" value="Interest Only" name="radio-type" id="interest-only" class="radio-input" required>
                         <label for="interest-only" class="radio-label">Interest Only</label>
                     </div>
                 </div>
 
                 <button type="submit" class="calculate-mortgage" id="calculate-mortgage">
                     <img src="assets/images/icon-calculator.svg" alt="mortgage-calculator">
-                    Calculate Repayments
+                    <span> Calculate Repayments </span>
                 </button>
             </form>
         </section>
