@@ -36,13 +36,14 @@ body {
 .container {
     background-color: var(--neutral);
     display: flex;
-    /* * OR USE */
+    /** OR USE */
     /* ? display:  grid;   */
     /* ? grid-template-columns:  2fr 2fr; */
     width:  84vw;
     border-radius:  16px;
 }
 
+/** Mortgage Calculator Section Styling */
 .calculator {
     width:  50%;    /** Comment out or Delete this to use 'display:grid' */
     padding:  25px;
@@ -62,7 +63,22 @@ body {
     padding-bottom: 2px;
 }
 
-.currency-amount {
+/** Mortgage Form Styling  */
+.user-inputs{
+    height: 100%;
+    padding: 24px 0 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input-header, .mortgage-type-header{
+    display: inline-block;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.amount-in-currency {
     display: flex;
     align-items: center;
     border-radius:  5px;
@@ -79,6 +95,10 @@ body {
     border-bottom-left-radius:  5px;
 }
 
+i.fa-solid.fa-sterling-sign {
+    font-size: 12px;
+}
+
 .input-amount {
     width: 100%;
     border:  1px solid var(--slate-four);
@@ -91,6 +111,10 @@ body {
     outline:  none;
     height:  34px;
     padding:  0 16px;
+}
+
+.input-amount:focus {
+    border:  1px solid var(--primary-color-one);
 }
 
 /** Chrome, Safari, Edge, Opera */
@@ -136,6 +160,10 @@ input[type = number] {
     outline: none;
 }
 
+.input-duration:focus, .input-rate:focus{
+    border: 1px solid var(--primary-color-one);
+}
+
 .term {
     height: 34px;
     background-color: var(--slate-one);
@@ -149,6 +177,7 @@ input[type = number] {
     width: 55%;
 }
 
+/** Mortgage Radio Inputs Styling */
 .repayment {
     margin-bottom: 16px;
 }
@@ -199,17 +228,28 @@ input[type="radio"]:checked {
     text-align: center;
 }
 
-.calculate-mortgage{
+.calculate-mortgage {
     outline: none;
     border: none;
+    width: max-content;
     background-color: var(--primary-color-one);
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: inherit;
     font-weight: 700;
-    padding: 10px 20px;  
+    padding: 10px 30px;  
     border-radius: 25px;
+    cursor: pointer;
+}
+
+.calculate-mortgage img {
+    height: 2.5cap;
+}
+
+.calculate-mortgage span {
+    font-size: var(--p-font-size);
+    padding-left: 10px;
 }
 
 /** Mortgage Results Section Styling */
@@ -245,9 +285,5 @@ input[type="radio"]:checked {
 /** Form Active States  */
 .active-state-one {
     background-color: var(--primary-color-one);
-    border:  1px solid var(--primary-color-one);
-}
-
-.active-state-two {
     border:  1px solid var(--primary-color-one);
 }
