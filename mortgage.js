@@ -1,3 +1,6 @@
+//* Form 
+const form = document.getElementById('form'); 
+
 //* Input Field Elements
 const inputAmount = document.getElementById('input-amount');
 const inputDuration = document.getElementById('input-duration');
@@ -5,8 +8,14 @@ const inputRate = document.getElementById('input-rate');
 
 //* Input Field Terms/Representations 
 const currencySymbol = document.querySelector('.currency-symbol');
+const term = document.getElementsByClassName('.term');
 const durationTerm = document.getElementById('duration-term');
 const rateTerm = document.getElementById('rate-term');
+
+//* Radio Inputs
+const radioContainer = document.querySelector('.mortgage-type')
+const radioRepayment = document.getElementById('repayment');
+const radioInterestOnly = document.getElementById('interest-only');
 
 function activeStates() {
     inputAmount.addEventListener ('focus',  () => {
@@ -58,8 +67,6 @@ document.body.addEventListener('click', (event) => {
 });
 
 //* Radio inputs functionality 
-const radioRepayment = document.getElementById('repayment');
-const radioInterestOnly = document.getElementById('interest-only');
 
 //* Common class for both radio inputs
 const radioInputs = document.querySelectorAll('.radio-input');
@@ -79,3 +86,66 @@ radioInputs.forEach(radioInput => {
         }
     });
 });
+
+//* Form Validation
+// Assuming you have the following classes in your CSS: error-term, error-input, error-message
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    validateInputs();
+});
+
+const validateInputs = () => {
+    const amountValue = inputAmount.value.trim();
+    const durationValue = inputDuration.value.trim();
+    const rateValue = inputRate.value.trim();
+
+    if (amountValue === '') {
+        currencySymbol.classList.add('error-terms');
+        inputAmount.classList.add('error-input');
+        setError();
+    }
+    else {
+        currencySymbol.classList.remove('error-terms');
+        inputAmount.classList.remove('error-input');
+        removeError();
+    }
+
+    if (durationValue === '') {
+        durationTerm.classList.add('error-terms');
+        inputDuration.classList.add('error-input');
+        setError();
+    }
+    else {
+        durationTerm.classList.remove('error-terms');
+        inputDuration.classList.remove('error-input');
+        removeError();
+    }
+
+    if (rateValue === '') {
+        rateTerm.classList.add('error-terms');
+        inputRate.classList.add('error-input');
+        setError();
+    }
+    else {
+        rateTerm.classList.remove('error-terms');
+        inputRate.classList.remove('error-input');
+        removeError();
+    }
+}
+
+const setError = () => {
+    //* Select and display error message in span element with class "error-message"
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(errorMsg => {
+        errorMsg.innerText = 'This field is required';
+    });
+}
+
+const removeError = () => {
+    //* Select and display error message in span element with class "error-message"
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(errorMsg => {
+        errorMsg.innerText = '';
+    });
+}
