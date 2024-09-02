@@ -64,7 +64,7 @@ body {
 }
 
 /** Mortgage Form Styling  */
-.user-inputs{
+.form {
     height: 100%;
     padding: 24px 0 32px;
     display: flex;
@@ -259,6 +259,20 @@ input[type="radio"]:checked {
     font-size: var(--p-font-size);
     padding-left: 10px;
     text-align: center;
+}
+
+/** Error States Styling */
+.error-terms {
+    background-color: var(--primary-color-two);
+    color: var(--neutral);
+}
+.error-input {
+    border: 1px solid var(--primary-color-two);
+}
+.error-message{
+    color: var(--primary-color-two);
+    font-size: 12px;
+    margin-top: 10px;
 }
 
 .calculate-mortgage {
