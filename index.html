@@ -23,7 +23,7 @@
             </div>
 
             <!-- * Form  -->
-            <form class="user-inputs" autocomplete="on">
+            <form class="form" id="form" action="/" autocomplete="on">
                 <!--* Mortgage Amount -->
                 <div class="user-amount">
                     <label for="input-amount" class="input-header">Mortgage Amount</label> 
@@ -32,8 +32,9 @@
                         <span class="currency-symbol">
                             <i class="fa-solid fa-sterling-sign"></i>
                         </span>
-                        <input type="number" name="amount" class="input-amount" id="input-amount" pattern="[0-9]{1,9}" required/>
+                        <input type="number" name="amount" class="input-amount" id="input-amount" pattern="[0-9]{1,9}">
                     </div>
+                    <span class="error-message"></span>
                 </div>
 
                 <!--* Mortgage Duration(Years) & Rate(%) -->
@@ -42,19 +43,20 @@
                         <label for="input-duration" class="input-header">Mortgage Term</label>
                         <br>
                         <div class="duration-value">
-                            <input type="number" name="duration" class="input-duration" id="input-duration" pattern="[0-9]{1,5}" required>
+                            <input type="number" name="duration" class="input-duration" id="input-duration" pattern="[0-9]{1,5}">
                             <span class="term" id="duration-term">years</span>
                         </div>
+                        <span class="error-message"></span>
                     </div>
 
                     <div class="rate">
                         <label for="input-rate" class="input-header">Interest Rate</label>
                         <br>
                         <div class="rate-value">
-                            <input type="number" name="rate" class="input-rate" id="input-rate" pattern="[0-9]{1,5}" required>
+                            <input type="number" name="rate" class="input-rate" id="input-rate" pattern="[0-9]{1,5}">
                             <span class="term" id="rate-term">%</span>
                         </div>
-                        
+                        <span class="error-message"></span>
                     </div>
                 </div>
 
@@ -63,14 +65,15 @@
                     <header class="mortgage-type-header">Mortgage Type</header>
 
                     <div class="repayment flex">
-                        <input type="radio" value="Repayment" name="radio-type" id="repayment" class="radio-input" required>
+                        <input type="radio" value="Repayment" name="radio-type" id="repayment" class="radio-input">
                         <label for="repayment" class="radio-label">Repayment</label>
                     </div>
 
                     <div class="interest-only flex">
-                        <input type="radio" value="Interest Only" name="radio-type" id="interest-only" class="radio-input" required>
+                        <input type="radio" value="Interest Only" name="radio-type" id="interest-only" class="radio-input">
                         <label for="interest-only" class="radio-label">Interest Only</label>
                     </div>
+                    <span class="error-message"></span>
                 </div>
 
                 <button type="submit" class="calculate-mortgage" id="calculate-mortgage">
