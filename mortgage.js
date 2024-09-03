@@ -16,6 +16,13 @@ const radioContainer = document.querySelector('.mortgage-type')
 const radioRepayment = document.getElementById('repayment');
 const radioInterestOnly = document.getElementById('interest-only');
 
+//* Disable required states
+// inputAmount.removeAttribute("required");
+// inputDuration.removeAttribute("required");
+// inputRate.removeAttribute("required");
+// radioRepayment.removeAttribute("required");
+// radioInterestOnly.removeAttribute("required");
+
 function activeStates() {
     inputAmount.addEventListener ('focus',  () => {
         removeClasses(); // Remove active class from form before adding an active state
@@ -71,7 +78,6 @@ document.body.addEventListener('click', (event) => {
 //* Radio inputs functionality 
 //* Common class for both radio inputs
 const radioInputs = document.querySelectorAll('.radio-input');
-
 radioInputs.forEach(radioInput => {
     radioInput.addEventListener('change', (event) => {
         radioInputs.forEach(input => {
@@ -88,6 +94,7 @@ radioInputs.forEach(radioInput => {
     });
 });
 
+
 //* Form Validation
 form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -101,57 +108,48 @@ function validateInputs () {
     const durationValue = inputDuration.value.trim();
     const rateValue = inputRate.value.trim();
 
-    if ( amountValue === ' ' ) {
+    if ( amountValue === '' ) {
         setAmountError();
     }
     else {
         removeAmountError();
     }
 
-    if ( durationValue === ' ' ) {
+    if ( durationValue === '' ) {
         setDurationError();
     }
     else {
         removeDurationError();
     }
 
-    if ( rateValue === ' ' ) {
+    if ( rateValue === '' ) {
         setRateError();
     }
     else {
         removeRateError();
     }
 
-    // const inputs = document.querySelectorAll('.user-amount, .duration, .rate');
-    const errorInputs = document.querySelectorAll('.error-message');
-    errorInputs.forEach(errorInput => {
-        const parent = errorInput.parentElement;
+    //* ErrorMessages
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(errorMsg => {
+        const parent = errorMsg.parentElement;
         // console.log(parent);
         const inputField = parent.querySelector('input'); // Assuming the input field is an <input> element
         console.log(inputField);
-        if (inputField.value.trim() === ' ' ) {
+        if (inputField.value.trim() === '' ) {
             // console.log(inputField.value);
-            // errorInput.textContent = 'This field is required';
+            errorMsg.textContent = 'This field is required';
         } 
-        // else {
-        //     errorInput.textContent = ' ';
-        // }
+        else if (inputField.type === 'radio') {
+            errorMsg.textContent = 'This field is required';
+        }
+        else {
+            errorMsg.textContent = ' ';
+        }
     });
 }
 
-// const errorMessages = document.querySelectorAll('.error-message').forEach(errorMsg =>{
-//     setErrorMessage(errorMsg);
-// });
-
-// function setErrorMessage(errorMsg) {
-//     errorMsg.textContent = 'This field is required';
-// }
-
-// //* Remove Error Messages
-// function removeErrorMessage(errorMsg) {
-//     errorMsg.textContent = ' ';
-// }
-
+//* Functions for Error States
 //* Amount Error States
 function setAmountError(){
     currencySymbol.classList.add('error-terms');
