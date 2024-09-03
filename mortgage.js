@@ -21,16 +21,19 @@ function activeStates() {
     inputAmount.addEventListener ('focus',  () => {
         removeClasses(); // Remove active class from form before adding an active state
         currencySymbol.classList.add('active-state');
+        removeAmountError();
     });
     
     inputDuration.addEventListener ('focus',  () => {
         removeClasses(); // Remove active class from form before adding an active state
         durationTerm.classList.add('active-state');
+        removeDurationError();
     });
     
     inputRate.addEventListener ('focus',  () => {
         removeClasses(); // Remove active class from form before adding an active state
         rateTerm.classList.add('active-state');
+        removeRateError();
     });
 }
 
@@ -99,53 +102,82 @@ const validateInputs = () => {
     const amountValue = inputAmount.value.trim();
     const durationValue = inputDuration.value.trim();
     const rateValue = inputRate.value.trim();
-
-    if (amountValue === '') {
-        currencySymbol.classList.add('error-terms');
-        inputAmount.classList.add('error-input');
-        setError();
+    
+    function setErrorMessage() {
+        const errorMessages = document.getElementsByClassName('error-message');
+        errorMessages.textContent = 'This field is required';
     }
-    else {
-        currencySymbol.classList.remove('error-terms');
-        inputAmount.classList.remove('error-input');
-        removeError();
-    }
-
-    if (durationValue === '') {
-        durationTerm.classList.add('error-terms');
-        inputDuration.classList.add('error-input');
-        setError();
-    }
-    else {
-        durationTerm.classList.remove('error-terms');
-        inputDuration.classList.remove('error-input');
-        removeError();
+    
+    //* Remove Error Messages
+    function removeErrorMessage(errorMsg) {
+        errorMsg.textContent = ' ';
     }
 
-    if (rateValue === '') {
-        rateTerm.classList.add('error-terms');
-        inputRate.classList.add('error-input');
-        setError();
+    if ( amountValue === ' ' ) {
+        setAmountError();
+        setErrorMessage();
     }
     else {
-        rateTerm.classList.remove('error-terms');
-        inputRate.classList.remove('error-input');
-        removeError();
+        removeAmountError();
+    }
+
+    if ( durationValue === ' ' ) {
+        setDurationError();
+    }
+    else {
+        removeDurationError();
+    }
+
+    if ( rateValue === ' ' ) {
+        setRateError();
+    }
+    else {
+        removeRateError();
     }
 }
 
-const setError = () => {
-    //* Select and display error message in span element with class "error-message"
-    const errorMessages = document.querySelectorAll('.error-message');
-    errorMessages.forEach(errorMsg => {
-        errorMsg.innerText = 'This field is required';
-    });
+// const errorMessages = document.querySelectorAll('.error-message').forEach(errorMsg =>{
+//     setErrorMessage(errorMsg);
+// });
+
+// function setErrorMessage(errorMsg) {
+//     errorMsg.textContent = 'This field is required';
+// }
+
+// //* Remove Error Messages
+// function removeErrorMessage(errorMsg) {
+//     errorMsg.textContent = ' ';
+// }
+
+//* Amount Error States
+function setAmountError(){
+    currencySymbol.classList.add('error-terms');
+    inputAmount.classList.add('error-input');
 }
 
-const removeError = () => {
-    //* Select and display error message in span element with class "error-message"
-    const errorMessages = document.querySelectorAll('.error-message');
-    errorMessages.forEach(errorMsg => {
-        errorMsg.innerText = '';
-    });
+function removeAmountError(){
+    currencySymbol.classList.remove('error-terms');
+    inputAmount.classList.remove('error-input');
+}
+
+//* Duration Error States
+function setDurationError(){
+    durationTerm.classList.add('error-terms');
+    inputDuration.classList.add('error-input');
+}
+
+function removeDurationError(){
+    durationTerm.classList.remove('error-terms');
+    inputDuration.classList.remove('error-input');
+}
+
+//* Rate Error States
+function setRateError(){
+    rateTerm.classList.add('error-terms');
+    inputRate.classList.add('error-input');
+}
+
+function removeRateError(){
+    rateTerm.classList.remove('error-terms');
+    inputRate.classList.remove('error-input');
 }
