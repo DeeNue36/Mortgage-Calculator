@@ -264,6 +264,7 @@ input[type="radio"]:checked {
 /** Error States Styling */
 .error-terms {
     background-color: var(--primary-color-two);
+    border: 1px solid var(--primary-color-two);
     color: var(--neutral);
 }
 .error-input {
