@@ -8,7 +8,6 @@ const inputRate = document.getElementById('input-rate');
 
 //* Input Field Terms/Representations 
 const currencySymbol = document.querySelector('.currency-symbol');
-const term = document.getElementsByClassName('.term');
 const durationTerm = document.getElementById('duration-term');
 const rateTerm = document.getElementById('rate-term');
 
@@ -70,7 +69,6 @@ document.body.addEventListener('click', (event) => {
 });
 
 //* Radio inputs functionality 
-
 //* Common class for both radio inputs
 const radioInputs = document.querySelectorAll('.radio-input');
 
@@ -91,31 +89,20 @@ radioInputs.forEach(radioInput => {
 });
 
 //* Form Validation
-// Assuming you have the following classes in your CSS: error-term, error-input, error-message
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     validateInputs();
+    // alert('Hello Buky');
 });
 
-const validateInputs = () => {
+function validateInputs () {
     const amountValue = inputAmount.value.trim();
     const durationValue = inputDuration.value.trim();
     const rateValue = inputRate.value.trim();
-    
-    function setErrorMessage() {
-        const errorMessages = document.getElementsByClassName('error-message');
-        errorMessages.textContent = 'This field is required';
-    }
-    
-    //* Remove Error Messages
-    function removeErrorMessage(errorMsg) {
-        errorMsg.textContent = ' ';
-    }
 
     if ( amountValue === ' ' ) {
         setAmountError();
-        setErrorMessage();
     }
     else {
         removeAmountError();
@@ -134,6 +121,22 @@ const validateInputs = () => {
     else {
         removeRateError();
     }
+
+    // const inputs = document.querySelectorAll('.user-amount, .duration, .rate');
+    const errorInputs = document.querySelectorAll('.error-message');
+    errorInputs.forEach(errorInput => {
+        const parent = errorInput.parentElement;
+        // console.log(parent);
+        const inputField = parent.querySelector('input'); // Assuming the input field is an <input> element
+        console.log(inputField);
+        if (inputField.value.trim() === ' ' ) {
+            // console.log(inputField.value);
+            // errorInput.textContent = 'This field is required';
+        } 
+        // else {
+        //     errorInput.textContent = ' ';
+        // }
+    });
 }
 
 // const errorMessages = document.querySelectorAll('.error-message').forEach(errorMsg =>{
