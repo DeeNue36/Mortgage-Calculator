@@ -182,3 +182,18 @@ function removeRateError(){
     rateTerm.classList.remove('error-terms');
     inputRate.classList.remove('error-input');
 }
+
+//* Moving cursor to next input field on hitting enter  
+let inputs = document.querySelectorAll("input,select");
+for ( let i = 0 ; i < inputs.length; i++ ) {
+    inputs[ i ].addEventListener("keypress", function(e){
+        if (e.which == 13) {
+            e.preventDefault();
+            var nextInput = document.querySelectorAll('[tabIndex="' + (this.tabIndex + 1) + '"]');
+            if (nextInput.length === 0) {
+                nextInput = document.querySelectorAll('[tabIndex="1"]');
+            }
+            nextInput[0].focus();
+        }
+    })
+}
