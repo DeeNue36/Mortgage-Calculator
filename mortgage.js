@@ -129,7 +129,7 @@ function validateInputs () {
         removeRateError();
     }
 
-    //* ErrorMessages
+    //* Error Messages
     const errorMessages = document.querySelectorAll('.error-message');
     errorMessages.forEach(errorMsg => {
         const parent = errorMsg.parentElement;
@@ -140,11 +140,11 @@ function validateInputs () {
             // console.log(inputField.value);
             errorMsg.textContent = 'This field is required';
         } 
-        else if (inputField.type === 'radio') {
+        else if (inputField.type === 'radio' && !document.querySelector(`input[name=${inputField.name}]:checked`) ) {
             errorMsg.textContent = 'This field is required';
         }
         else {
-            errorMsg.textContent = ' ';
+            errorMsg.textContent = '';
         }
     });
 }
