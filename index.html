@@ -18,7 +18,7 @@
             <!-- * Form Heading & Clear Button -->
             <div class="heading">
                 <h2 class="header">Mortgage Calculator</h2>
-                <span id="clear-calculator">Clear All</span>
+                <span id="clear-calculator" tabindex="7">Clear All</span>
                 <!-- <input type="reset" value="Clear All" id="clear-calculator"> -->
             </div>
 
@@ -32,7 +32,7 @@
                         <span class="currency-symbol">
                             <i class="fa-solid fa-sterling-sign"></i>
                         </span>
-                        <input type="number" name="amount" class="input-amount" id="input-amount" pattern="[0-9]*\.?[0-9]+" tabindex="1">
+                        <input type="text" name="amount" class="input-amount" id="input-amount" pattern="[0-9]*\.?[0-9]+" tabindex="1">
                     </div>
                     <span class="error-message"></span>
                 </div>
@@ -43,7 +43,7 @@
                         <label for="input-duration" class="input-header">Mortgage Term</label>
                         <br>
                         <div class="duration-value">
-                            <input type="number" name="duration" class="input-duration" id="input-duration" pattern="[0-9]*\.?[0-9]+" tabindex="2">
+                            <input type="text" name="duration" class="input-duration" id="input-duration" pattern="[0-9]*\.?[0-9]+" tabindex="2">
                             <span class="term" id="duration-term">years</span>
                         </div>
                         <span class="error-message"></span>
@@ -53,7 +53,7 @@
                         <label for="input-rate" class="input-header">Interest Rate</label>
                         <br>
                         <div class="rate-value">
-                            <input type="number" name="rate" class="input-rate" id="input-rate" pattern="[0-9]*\.?[0-9]+" tabindex="3">
+                            <input type="text" name="rate" class="input-rate" id="input-rate" pattern="[0-9]*\.?[0-9]+" tabindex="3">
                             <span class="term" id="rate-term">%</span>
                         </div>
                         <span class="error-message"></span>
