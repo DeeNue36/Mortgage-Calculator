@@ -74,7 +74,7 @@ body {
 
 .input-header, .mortgage-type-header{
     display: inline-block;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     font-size: 14px;
 }
 
@@ -108,7 +108,7 @@ body {
     border-bottom-left-radius:  5px;
 }
 
-i.fa-solid.fa-sterling-sign {
+.currency-symbol > i.fa-solid.fa-sterling-sign {
     font-size: 12px;
 }
 
@@ -222,7 +222,11 @@ input[type = number] {
     cursor: pointer;
 }
 
-#repayment, #interest-only {
+.repayment, 
+.interest-only, 
+.radio-label, 
+#repayment, 
+#interest-only {
     cursor: pointer;
 }
 
