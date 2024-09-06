@@ -1,6 +1,9 @@
 //* Form 
 const form = document.getElementById('form'); 
 
+//* Clear All Button
+const clearAll = document.getElementById('clear-calculator');
+
 //* Input Field Elements
 const inputAmount = document.getElementById('input-amount');
 const inputDuration = document.getElementById('input-duration');
@@ -16,13 +19,17 @@ const radioContainer = document.querySelector('.mortgage-type')
 const radioRepayment = document.getElementById('repayment');
 const radioInterestOnly = document.getElementById('interest-only');
 
-//* Disable required states
-// inputAmount.removeAttribute("required");
-// inputDuration.removeAttribute("required");
-// inputRate.removeAttribute("required");
-// radioRepayment.removeAttribute("required");
-// radioInterestOnly.removeAttribute("required");
+//* Reset the form
+clearAll.addEventListener('click', () => {
+    form.reset();
+     // Reset radio input styles
+    radioInputs.forEach(input => {
+        input.parentElement.style.border = '1px solid var(--slate-four)';
+        input.parentElement.style.backgroundColor = 'var(--neutral)';
+    });
+});
 
+//* Active states of the input fields
 function activeStates() {
     inputAmount.addEventListener ('focus',  () => {
         removeClasses(); // Remove active class from form before adding an active state
@@ -67,7 +74,7 @@ function removeClasses() {
 
 //* Click event listener on body to remove classes
 document.body.addEventListener('click', (event) => {
-    // Check if the click is not on any of the form elements
+    // Checks if the click is not on any of the form elements
     if (!event.target.closest('#input-amount') &&
         !event.target.closest('#input-duration') &&
         !event.target.closest('#input-rate')) {
@@ -133,11 +140,11 @@ function validateInputs () {
     const errorMessages = document.querySelectorAll('.error-message');
     errorMessages.forEach(errorMsg => {
         const parent = errorMsg.parentElement;
-        // console.log(parent);
-        const inputField = parent.querySelector('input'); // Assuming the input field is an <input> element
-        console.log(inputField);
+        console.log(parent);
+        const inputField = parent.querySelector('input'); // Selecting the <input> element
+        // console.log(inputField);
         if (inputField.value.trim() === '' ) {
-            // console.log(inputField.value);
+            console.log(inputField.value);
             errorMsg.textContent = 'This field is required';
         } 
         else if (inputField.type === 'radio' && !document.querySelector(`input[name=${inputField.name}]:checked`) ) {
