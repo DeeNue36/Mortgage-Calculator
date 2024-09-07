@@ -16,11 +16,11 @@
         <!--* Mortgage Form & Calculator Section -->
         <section class="calculator">
             <!-- * Form Heading & Clear Button -->
-            <div class="heading">
+            <header class="heading">
                 <h2 class="header">Mortgage Calculator</h2>
                 <span id="clear-calculator" tabindex="7">Clear All</span>
                 <!-- <input type="reset" value="Clear All" id="clear-calculator"> -->
-            </div>
+            </header>
 
             <!-- * Form  -->
             <form class="form" id="form" action="/" autocomplete="on">
@@ -85,7 +85,7 @@
 
         <!--* Mortgage Results section -->
         <section class="results">
-            <div class="default-result">
+            <!-- <div class="default-result">
                 <img src="assets/images/illustration-empty.svg" alt="Empty-result-image">
                 <h2 class="default-result-header">
                     Results shown here
@@ -93,6 +93,38 @@
                 <p class="default-result-text">
                     Complete the form and click “calculate repayments” to see what your monthly repayment would be.
                 </p>
+            </div> -->
+
+            <div class="full-results">
+                <h2 class="full-results-header">
+                    Your Results
+                </h2>
+
+                <p class="full-results-text">
+                    Your results are shown below based on the information you provided. 
+                    To adjust the results, edit the form and click “calculate repayments” again.
+                </p>
+
+                <div class="computed-results">
+                    <span>Your monthly repayments</span>
+                    <h1 class="monthly-repayment">
+                        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke="currentColor" stroke-width="32" d="M375.942,160a88.042,88.042,0,0,0-176.033,3.024v76.588H136v32h63.909v120.3H136v32H376v-32H231.909v-120.3H344v-32H231.909V163.024a56.046,56.046,0,0,1,112.091,0V168h32v-8Z" class="ci-primary"/>
+                        </svg>
+                        <span id="monthly-repayment-amount">1</span>
+                    </h1>
+
+                    <hr>
+
+                    <span>Total you'll repay over the term</span>
+                    <h4 class="total-repayment">
+                        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke="currentColor" stroke-width="24" d="M375.942,160a88.042,88.042,0,0,0-176.033,3.024v76.588H136v32h63.909v120.3H136v32H376v-32H231.909v-120.3H344v-32H231.909V163.024a56.046,56.046,0,0,1,112.091,0V168h32v-8Z" class="ci-primary"/>
+                        </svg>
+                        <span id="total-repayment-amount">1</span>
+                    </h4>
+                </div>
+
             </div>
         </section>
     </main>
