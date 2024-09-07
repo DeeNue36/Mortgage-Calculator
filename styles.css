@@ -267,7 +267,7 @@ input[type="radio"]:checked {
 }
 
 /** Form Active State  */
-.active-state{
+.active-state {
     background-color: var(--primary-color-one);
     border:  1px solid var(--primary-color-one);
 }
@@ -278,13 +278,32 @@ input[type="radio"]:checked {
     border: 1px solid var(--primary-color-two);
     color: var(--neutral);
 }
+
 .error-input {
     border: 1px solid var(--primary-color-two);
 }
-.error-message{
+
+.error-message {
     color: var(--primary-color-two);
     font-size: 12px;
     margin-top: 10px;
+}
+
+.error-vibrate {
+    animation: shake .12s 5;
+}
+
+@keyframes shake {
+    0% { 
+        transform: translateX(0);
+    }
+    40% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
+
 }
 
 /** Calculate Mortgage Button Styling */
@@ -315,6 +334,7 @@ input[type="radio"]:checked {
     font-size: var(--p-font-size);
     padding-left: 10px;
 }
+
 
 /** Mortgage Results Section Styling */
 .results {
@@ -351,6 +371,7 @@ input[type="radio"]:checked {
     padding: 25px;
 }
 
+/** Header & Text */
 .full-results-header {
     color: var(--neutral);
     margin-bottom: 8px;
@@ -363,6 +384,7 @@ input[type="radio"]:checked {
     margin-bottom: 24px;
 }
 
+/** Computed Results Styling -- Mortgage Results being displayed to the user */
 .computed-results {
     background-color: #0E2431;
     border-top: 4px solid var(--primary-color-one);
