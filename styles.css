@@ -40,6 +40,7 @@ body {
     /* ? display:  grid;   */
     /* ? grid-template-columns:  2fr 2fr; */
     width:  84vw;
+    height:  84vh;
     border-radius:  16px;
 }
 
@@ -265,6 +266,12 @@ input[type="radio"]:checked {
     text-align: center;
 }
 
+/** Form Active State  */
+.active-state{
+    background-color: var(--primary-color-one);
+    border:  1px solid var(--primary-color-one);
+}
+
 /** Error States Styling */
 .error-terms {
     background-color: var(--primary-color-two);
@@ -339,8 +346,78 @@ input[type="radio"]:checked {
     font-size:  var(--p-font-size);
 }
 
-/** Form Active States  */
-.active-state{
-    background-color: var(--primary-color-one);
-    border:  1px solid var(--primary-color-one);
+/** Full Results Styling */
+.full-results {
+    padding: 25px;
 }
+
+.full-results-header {
+    color: var(--neutral);
+    margin-bottom: 8px;
+}
+
+.full-results-text {
+    color: var(--slate-four);
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.computed-results {
+    background-color: #0E2431;
+    border-top: 4px solid var(--primary-color-one);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.computed-results span:nth-child(3n+1) {
+    color: var(--slate-four);
+    font-size: 15px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.monthly-repayment{
+    color: var(--primary-color-one);
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.monthly-repayment, .total-repayment{
+    display: flex;
+    align-items: center;
+}
+
+.monthly-repayment svg{
+    fill: var(--primary-color-one);
+    height: 2cap;
+    width: 48px;
+    margin-left: -8px;
+}
+
+span#monthly-repayment-amount {
+    margin-left: -10px;
+}
+
+hr {
+    margin: 24px 0;
+    border: 1px solid var(--slate-five);
+}
+
+.total-repayment{
+    color: var(--neutral);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.total-repayment svg{
+    fill: var(--neutral);
+    height: 1.5cap;
+    width: 48px;
+    margin-left: -12px;
+}
+
+span#total-repayment-amount{
+    margin-left: -16px;
+}
+
