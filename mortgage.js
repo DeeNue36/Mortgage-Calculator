@@ -4,6 +4,11 @@ const form = document.getElementById('form');
 //* Clear All Button
 const clearAll = document.getElementById('clear-calculator');
 
+//* Input Fields and Terms Containers
+const amountContainer = document.querySelector('.amount-in-currency');
+const durationContainer = document.querySelector('.duration-value');
+const rateContainer = document.querySelector('.rate-value');
+
 //* Input Field Elements
 const inputAmount = document.getElementById('input-amount');
 const inputDuration = document.getElementById('input-duration');
@@ -107,7 +112,6 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     validateInputs();
-    // alert('Hello Buky');
 });
 
 function validateInputs () {
@@ -149,9 +153,11 @@ function validateInputs () {
         } 
         else if (inputField.type === 'radio' && !document.querySelector(`input[name=${inputField.name}]:checked`) ) {
             errorMsg.textContent = 'This field is required';
+            radioContainer.classList.add('error-vibrate');
         }
         else {
             errorMsg.textContent = '';
+            radioContainer.classList.remove('error-vibrate');
         }
     });
 }
@@ -161,33 +167,39 @@ function validateInputs () {
 function setAmountError(){
     currencySymbol.classList.add('error-terms');
     inputAmount.classList.add('error-input');
+    amountContainer.classList.add('error-vibrate');
 }
 
 function removeAmountError(){
     currencySymbol.classList.remove('error-terms');
     inputAmount.classList.remove('error-input');
+    amountContainer.classList.remove('error-vibrate');
 }
 
 //* Duration Error States
 function setDurationError(){
     durationTerm.classList.add('error-terms');
     inputDuration.classList.add('error-input');
+    durationContainer.classList.add('error-vibrate');
 }
 
 function removeDurationError(){
     durationTerm.classList.remove('error-terms');
     inputDuration.classList.remove('error-input');
+    durationContainer.classList.remove('error-vibrate');
 }
 
 //* Rate Error States
 function setRateError(){
     rateTerm.classList.add('error-terms');
     inputRate.classList.add('error-input');
+    rateContainer.classList.add('error-vibrate');
 }
 
 function removeRateError(){
     rateTerm.classList.remove('error-terms');
     inputRate.classList.remove('error-input');
+    rateContainer.classList.remove('error-vibrate');
 }
 
 //* Moving cursor to next input field on hitting enter  
