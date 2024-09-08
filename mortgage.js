@@ -110,9 +110,41 @@ radioInputs.forEach(radioInput => {
 //* Form Validation
 form.addEventListener('submit', (event) => {
     event.preventDefault();
+    validateInputs();
+    calculateMortgage();
+});
+
+function calculateMortgage() {
+    const principalAmount = parseFloat(inputAmount.value);
+    const duration = parseFloat(inputDuration.value);
+    const rate = parseFloat(inputRate.value) / 100;
+    const mortgageType = document.querySelector('input[name="radio-type"]:checked');
 
     validateInputs();
-});
+
+    let monthlyPayment = 0;
+    let totalRepayment = 0;
+
+    if (mortgageType.value === 'repayment') {
+        const monthlyRate = rate / 12;
+        const n = duration * 12;
+
+        // monthlyPayment = (principalAmount * monthlyRate) / (1 - Math.pow((1 + monthlyRate, -n));
+
+        monthlyPayment = principalAmount * ( monthlyRate *((1 + monthlyRate)**n) ) / ( ((1 + monthlyRate)**n) - 1 );
+
+        totalRepayment = monthlyPayment * n;
+    }
+    else if (mortgageType.value === 'interest-only') {
+        monthlyPayment = (principalAmount * rate) / 12;
+
+        totalRepayment = monthlyPayment * duration * 12;
+    }
+
+    document.getElementById('monthly-repayment-amount').innerText = `${monthlyPayment.toFixed(2)}`;
+
+    document.getElementById('total-repayment-amount').innerText = `${totalRepayment.toFixed(2)}`;
+}
 
 function validateInputs () {
     const amountValue = inputAmount.value.trim();
@@ -216,3 +248,10 @@ for ( let i = 0 ; i < inputs.length; i++ ) {
         }
     })
 }
+
+//* Add a comma to numbers while typing
+// inputAmount.addEventListener("keyup", ()=>{
+//     let tempNumber = inputAmount.value.replace(/,/gi, "");
+//     let commaSeparatedNumber = tempNumber.split(/(?=(?:\d{3})+$)/).join(",");
+//     inputAmount.value = commaSeparatedNumber;
+// });
