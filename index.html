@@ -19,7 +19,6 @@
             <header class="heading">
                 <h2 class="header">Mortgage Calculator</h2>
                 <span id="clear-calculator" tabindex="7">Clear All</span>
-                <!-- <input type="reset" value="Clear All" id="clear-calculator"> -->
             </header>
 
             <!-- * Form  -->
@@ -32,7 +31,7 @@
                         <span class="currency-symbol">
                             <i class="fa-solid fa-sterling-sign"></i>
                         </span>
-                        <input type="text" name="amount" class="input-amount" id="input-amount" pattern="[0-9]*[\.,]?[0-9]+" tabindex="1">
+                        <input type="number" name="amount" class="input-amount" id="input-amount" step="0.0001" tabindex="1">
                     </div>
                     <span class="error-message"></span>
                 </div>
@@ -43,7 +42,7 @@
                         <label for="input-duration" class="input-header">Mortgage Term</label>
                         <br>
                         <div class="duration-value">
-                            <input type="text" name="duration" class="input-duration" id="input-duration" pattern="[0-9]*\.?[0-9]+" tabindex="2">
+                            <input type="number" name="duration" class="input-duration" id="input-duration" step="0.01" tabindex="2">
                             <span class="term" id="duration-term">years</span>
                         </div>
                         <span class="error-message"></span>
@@ -53,7 +52,7 @@
                         <label for="input-rate" class="input-header">Interest Rate</label>
                         <br>
                         <div class="rate-value">
-                            <input type="text" name="rate" class="input-rate" id="input-rate" pattern="[0-9]*\.?[0-9]+" tabindex="3">
+                            <input type="number" name="rate" class="input-rate" id="input-rate" step="0.01" tabindex="3">
                             <span class="term" id="rate-term">%</span>
                         </div>
                         <span class="error-message"></span>
@@ -65,12 +64,12 @@
                     <header class="mortgage-type-header">Mortgage Type</header>
 
                     <div class="repayment flex">
-                        <input type="radio" value="Repayment" name="radio-type" id="repayment" class="radio-input" tabindex="4">
+                        <input type="radio" value="repayment" name="radio-type" id="repayment" class="radio-input" tabindex="4">
                         <label for="repayment" class="radio-label">Repayment</label>
                     </div>
 
                     <div class="interest-only flex">
-                        <input type="radio" value="Interest Only" name="radio-type" id="interest-only" class="radio-input" tabindex="5">
+                        <input type="radio" value="interest-only" name="radio-type" id="interest-only" class="radio-input" tabindex="5">
                         <label for="interest-only" class="radio-label">Interest Only</label>
                     </div>
                     <span class="error-message"></span>
@@ -106,22 +105,22 @@
                 </p>
 
                 <div class="computed-results">
-                    <span>Your monthly repayments</span>
+                    <span> Your monthly repayments </span>
                     <h1 class="monthly-repayment">
                         <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                             <path stroke="currentColor" stroke-width="32" d="M375.942,160a88.042,88.042,0,0,0-176.033,3.024v76.588H136v32h63.909v120.3H136v32H376v-32H231.909v-120.3H344v-32H231.909V163.024a56.046,56.046,0,0,1,112.091,0V168h32v-8Z" class="ci-primary"/>
                         </svg>
-                        <span id="monthly-repayment-amount">1</span>
+                        <span id="monthly-repayment-amount">0</span>
                     </h1>
 
                     <hr>
 
-                    <span>Total you'll repay over the term</span>
+                    <span> Total you'll repay over the term </span>
                     <h4 class="total-repayment">
                         <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                             <path stroke="currentColor" stroke-width="24" d="M375.942,160a88.042,88.042,0,0,0-176.033,3.024v76.588H136v32h63.909v120.3H136v32H376v-32H231.909v-120.3H344v-32H231.909V163.024a56.046,56.046,0,0,1,112.091,0V168h32v-8Z" class="ci-primary"/>
                         </svg>
-                        <span id="total-repayment-amount">1</span>
+                        <span id="total-repayment-amount">0</span>
                     </h4>
                 </div>
 
