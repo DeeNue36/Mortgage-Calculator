@@ -120,7 +120,26 @@ function calculateMortgage() {
     const rate = parseFloat(inputRate.value) / 100;
     const mortgageType = document.querySelector('input[name="radio-type"]:checked');
 
-    validateInputs();
+    if(isNaN(principalAmount) || principalAmount <= 0) {
+        validateInputs();
+    }
+
+    if(isNaN(duration) || duration <= 0) {
+        validateInputs();
+    }
+
+    if(isNaN(rate) || rate <= 0) {
+        validateInputs();
+    }
+
+    if(mortgageType === null) { 
+        validateInputs();
+    }
+
+     //* Check if any input field is empty after initial validation and stop calculations
+    if (inputAmount.value.trim() === '' || inputDuration.value.trim() === '' || inputRate.value.trim() === '' || mortgageType === null) {
+        return;  // Exit the function to prevent further calculations
+    }
 
     let monthlyPayment = 0;
     let totalRepayment = 0;
@@ -144,47 +163,49 @@ function calculateMortgage() {
     document.getElementById('monthly-repayment-amount').innerText = `${monthlyPayment.toFixed(2)}`;
 
     document.getElementById('total-repayment-amount').innerText = `${totalRepayment.toFixed(2)}`;
+
 }
 
+//* Checks for empty values and sets or removes the error states
+// * Parameters -- value reps the Value of the input field, setError reps the Error Functions and removeError reps the Remove Error Functions
+function handleInputError (value, setError, removeError) {
+    if (value === '') {
+        setError();
+    }
+    else {
+        removeError();
+    }
+}
+
+// * Function to validate the inputs, set and remove error states
 function validateInputs () {
     const amountValue = inputAmount.value.trim();
     const durationValue = inputDuration.value.trim();
     const rateValue = inputRate.value.trim();
 
-    if ( amountValue === '' ) {
-        setAmountError();
-    }
-    else {
-        removeAmountError();
-    }
-
-    if ( durationValue === '' ) {
-        setDurationError();
-    }
-    else {
-        removeDurationError();
-    }
-
-    if ( rateValue === '' ) {
-        setRateError();
-    }
-    else {
-        removeRateError();
-    }
+    handleInputError(amountValue, setAmountError, removeAmountError);
+    handleInputError(durationValue, setDurationError, removeDurationError);
+    handleInputError(rateValue, setRateError, removeRateError);
 
     //* Error Messages
     const errorMessages = document.querySelectorAll('.error-message');
     errorMessages.forEach(errorMsg => {
+        
+        // * Select the parent element of the error message
         const parent = errorMsg.parentElement;
-        console.log(parent);
-        const inputField = parent.querySelector('input'); // Selecting the <input> element
-        // console.log(inputField);
+
+        //* Selecting the <input> element
+        const inputField = parent.querySelector('input'); 
+
+        // * Storing the error message to be displayed using dataset  attributes
+        const errorMessage = inputField.dataset.errorMessage; 
+
+        //* Checks for empty values and display the error message
         if (inputField.value.trim() === '' ) {
-            console.log(inputField.value);
-            errorMsg.textContent = 'This field is required';
+            errorMsg.textContent = errorMessage || 'This field is required';
         } 
         else if (inputField.type === 'radio' && !document.querySelector(`input[name=${inputField.name}]:checked`) ) {
-            errorMsg.textContent = 'This field is required';
+            errorMsg.textContent = errorMessage || 'This field is required';
             radioContainer.classList.add('error-vibrate');
         }
         else {
@@ -192,20 +213,52 @@ function validateInputs () {
             radioContainer.classList.remove('error-vibrate');
         }
     });
+
+    // * Alternative Ways For Checking Empty Inputs and Setting Error States 
+     // ! Alternative way (1) 
+    // const inputFields = [
+    //     { value: inputAmount.value.trim(), errorFunc: setAmountError, successFunc: removeAmountError },
+    //     { value: inputDuration.value.trim(), errorFunc: setDurationError, successFunc: removeDurationError },
+    //     { value: inputRate.value.trim(), errorFunc: setRateError, successFunc: removeRateError }
+    // ];
+
+    // inputFields.forEach(field => {
+    //     if (field.value === '') {
+    //         field.errorFunc();
+    //     } else {
+    //         field.successFunc();
+    //     }
+    // });
+
+    // !  Alternative way (2) 
+    // if ( amountValue === '' ) {
+    //     setAmountError();
+    // }
+    // else {
+    //     removeAmountError();
+    // }
+    // if ( durationValue === '' ) {
+    //     setDurationError();
+    // }
+    // else {
+    //     removeDurationError();
+    // }
+    // if ( rateValue === '' ) {
+    //     setRateError();
+    // }
+    // else {
+    //     removeRateError();
+    // }
+
 }
 
 //* Functions for Error States
+
 //* Amount Error States
 function setAmountError(){
     currencySymbol.classList.add('error-terms');
     inputAmount.classList.add('error-input');
     amountContainer.classList.add('error-vibrate');
-}
-
-function removeAmountError(){
-    currencySymbol.classList.remove('error-terms');
-    inputAmount.classList.remove('error-input');
-    amountContainer.classList.remove('error-vibrate');
 }
 
 //* Duration Error States
@@ -215,12 +268,6 @@ function setDurationError(){
     durationContainer.classList.add('error-vibrate');
 }
 
-function removeDurationError(){
-    durationTerm.classList.remove('error-terms');
-    inputDuration.classList.remove('error-input');
-    durationContainer.classList.remove('error-vibrate');
-}
-
 //* Rate Error States
 function setRateError(){
     rateTerm.classList.add('error-terms');
@@ -228,6 +275,23 @@ function setRateError(){
     rateContainer.classList.add('error-vibrate');
 }
 
+// * Functions For Removing Error States
+
+// * Remove Amount Error State
+function removeAmountError(){
+    currencySymbol.classList.remove('error-terms');
+    inputAmount.classList.remove('error-input');
+    amountContainer.classList.remove('error-vibrate');
+}
+
+// * Remove Duration Error State
+function removeDurationError(){
+    durationTerm.classList.remove('error-terms');
+    inputDuration.classList.remove('error-input');
+    durationContainer.classList.remove('error-vibrate');
+}
+
+// * Remove Rate Error State
 function removeRateError(){
     rateTerm.classList.remove('error-terms');
     inputRate.classList.remove('error-input');
