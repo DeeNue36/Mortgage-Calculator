@@ -421,6 +421,11 @@ span#monthly-repayment-amount {
     margin-left: -10px;
 }
 
+span#monthly-repayment-amount, span#total-repayment-amount {
+    width: 100%;
+    overflow-wrap: anywhere;
+}
+
 hr {
     margin: 24px 0;
     border: 1px solid var(--slate-five);
