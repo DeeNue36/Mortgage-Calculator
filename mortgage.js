@@ -141,6 +141,48 @@ function calculateMortgage() {
         return;  // Exit the function to prevent further calculations
     }
 
+    //* Validate inputAmount range
+    const amountParent = document.querySelector('.user-amount');
+    const amountRangeError = amountParent.querySelector('.error-message');
+    if (principalAmount < 10000 || principalAmount > 3000000 ||isNaN(principalAmount) ) {
+        // Display an error message or set an error state for inputAmount
+        setAmountError();
+        amountRangeError.textContent = 'Amount should be between £10,000 and £3,000,000';
+    } else {
+        removeAmountError();
+        amountRangeError.textContent = '';
+    }
+    
+    //* Validate inputDuration range
+    const durationParent = document.querySelector('.duration');
+    const durationRangeError = durationParent.querySelector('.error-message');
+    if (duration < 1 || duration > 40 || isNaN(duration)) {
+        // Display an error message or set an error state for inputDuration
+        setDurationError();
+        durationRangeError.textContent = 'Duration should be between 1 and 40 years';
+    } else {
+        removeDurationError();
+        durationRangeError.textContent = '';
+    }
+
+    //* Validate inputRate range
+    const rateParent = document.querySelector('.rate');
+    const rateRangeError = rateParent.querySelector('.error-message');
+    if (rate < 1 || rate > 20 || isNaN(rate)) {
+        // Display an error message or set an error state for inputRate
+        setRateError();
+        rateRangeError.textContent = 'Rate should be between 1% and 20%';
+    } else {
+        removeRateError();
+        rateRangeError.textContent = '';
+    }
+
+    // Only proceed with mortgage calculation if all inputs are valid
+if (isNaN(principalAmount) || isNaN(duration) || isNaN(rate) || principalAmount < 10000 || principalAmount > 3000000 || duration < 1 || duration > 40 || rate < 1 || rate > 20) {
+    // Handle invalid inputs, display error messages, or prevent further calculation
+    return;
+}
+
     let monthlyPayment = 0;
     let totalRepayment = 0;
 
@@ -188,31 +230,7 @@ function validateInputs () {
     handleInputError(rateValue, setRateError, removeRateError);
 
     //* Error Messages
-    const errorMessages = document.querySelectorAll('.error-message');
-    errorMessages.forEach(errorMsg => {
-        
-        // * Select the parent element of the error message
-        const parent = errorMsg.parentElement;
-
-        //* Selecting the <input> element
-        const inputField = parent.querySelector('input'); 
-
-        // * Storing the error message to be displayed using dataset  attributes
-        const errorMessage = inputField.dataset.errorMessage; 
-
-        //* Checks for empty values and display the error message
-        if (inputField.value.trim() === '' ) {
-            errorMsg.textContent = errorMessage || 'This field is required';
-        } 
-        else if (inputField.type === 'radio' && !document.querySelector(`input[name=${inputField.name}]:checked`) ) {
-            errorMsg.textContent = errorMessage || 'This field is required';
-            radioContainer.classList.add('error-vibrate');
-        }
-        else {
-            errorMsg.textContent = '';
-            radioContainer.classList.remove('error-vibrate');
-        }
-    });
+    displayErrorMessages();
 
     // * Alternative Ways For Checking Empty Inputs and Setting Error States 
      // ! Alternative way (1) 
@@ -250,6 +268,35 @@ function validateInputs () {
     //     removeRateError();
     // }
 
+}
+
+//*  Display Error Messages
+function displayErrorMessages () {
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(errorMsg => {
+        
+        // * Select the parent element of the error message
+        const parent = errorMsg.parentElement;
+
+        //* Selecting the <input> element
+        const inputField = parent.querySelector('input'); 
+
+        // * Storing the error message to be displayed using dataset  attributes
+        const errorMessage = inputField.dataset.errorMessage; 
+
+        //* Checks for empty values and display the error message
+        if (inputField.value.trim() === '' ) {
+            errorMsg.textContent = errorMessage || 'This field is required';
+        } 
+        else if (inputField.type === 'radio' && !document.querySelector(`input[name=${inputField.name}]:checked`) ) {
+            errorMsg.textContent = errorMessage || 'This field is required';
+            radioContainer.classList.add('error-vibrate');
+        }
+        else {
+            errorMsg.textContent = '';
+            radioContainer.classList.remove('error-vibrate');
+        }
+    });
 }
 
 //* Functions for Error States
