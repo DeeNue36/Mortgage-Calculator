@@ -117,7 +117,7 @@ form.addEventListener('submit', (event) => {
 function calculateMortgage() {
     const principalAmount = parseFloat(inputAmount.value);
     const duration = parseFloat(inputDuration.value);
-    const rate = parseFloat(inputRate.value) / 100;
+    const rate = parseFloat(inputRate.value)  /100;
     const mortgageType = document.querySelector('input[name="radio-type"]:checked');
 
     if(isNaN(principalAmount) || principalAmount <= 0) {
@@ -168,7 +168,7 @@ function calculateMortgage() {
     //* Validate inputRate range
     const rateParent = document.querySelector('.rate');
     const rateRangeError = rateParent.querySelector('.error-message');
-    if (rate < 1 || rate > 20 || isNaN(rate)) {
+    if ( (rate < 1/100) || (rate > 20/100) || isNaN(rate)) {
         // Display an error message or set an error state for inputRate
         setRateError();
         rateRangeError.textContent = 'Rate should be between 1% and 20%';
