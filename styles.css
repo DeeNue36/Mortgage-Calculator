@@ -45,11 +45,14 @@ body {
 }
 
 /** Mortgage Calculator Section Styling */
+
+/** Parent Container */
 .calculator {
     width:  50%;    /** Comment out or Delete this to use 'display:grid' */
     padding:  25px;
 }
 
+/** Form Header and Clear All Button Styling */
 .heading {
     display: flex;
     justify-content:  space-between;
@@ -132,7 +135,7 @@ body {
     border:  1px solid var(--primary-color-one);
 }
 
-/** Chrome, Safari, Edge, Opera */
+/** Hide increase/decrease arrows -- Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -303,8 +306,8 @@ input[type="radio"]:checked {
     100% {
         transform: translateX(-10px);
     }
-
 }
+
 
 /** Calculate Mortgage Button Styling */
 .calculate-mortgage {
@@ -335,8 +338,19 @@ input[type="radio"]:checked {
     padding-left: 10px;
 }
 
+/** Classes for toggling between default result & full results */
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
 
 /** Mortgage Results Section Styling */
+
+/**  Parent  Container */
 .results {
     width: 50%;   /** Comment out or Delete this to use 'display:grid' */
     background-color: var(--slate-five);
@@ -345,6 +359,7 @@ input[type="radio"]:checked {
     border-bottom-left-radius:  64px;
 }
 
+/** Default Result Styling */
 .default-result {
     display: grid;
     place-items: center;
@@ -368,6 +383,7 @@ input[type="radio"]:checked {
 
 /** Full Results Styling */
 .full-results {
+    display: none;
     padding: 25px;
 }
 
