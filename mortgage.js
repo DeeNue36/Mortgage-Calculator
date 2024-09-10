@@ -24,6 +24,9 @@ const radioContainer = document.querySelector('.mortgage-type')
 const radioRepayment = document.getElementById('repayment');
 const radioInterestOnly = document.getElementById('interest-only');
 
+//* Calculate Mortgage Button
+const calculateMortgageBtn = document.getElementById('calculate-mortgage');
+
 //* Reset the form
 clearAll.addEventListener('click', () => {
     form.reset();
@@ -108,10 +111,21 @@ radioInputs.forEach(radioInput => {
 
 
 //* Form Validation
-form.addEventListener('submit', (event) => {
+calculateMortgageBtn.addEventListener('click', (event) => {
     event.preventDefault();
     validateInputs();
-    calculateMortgage();
+    if (inputAmount.value.trim() !== '' && inputDuration.value.trim() !== '' && inputRate.value.trim() !== '' && document.querySelector('input[name="radio-type"]:checked')) {
+
+        //* Hide the default result class and display the full result class
+        // document.querySelector('.default-result').style.display = 'none';
+        // document.querySelector('.full-results').style.display = 'block';
+        document.querySelector('.default-result').classList.add('hide');
+        document.querySelector('.full-results').classList.add('show');
+
+        //* Calculate and display the mortgage details
+        calculateMortgage();
+    };
+
 });
 
 function calculateMortgage() {
@@ -120,32 +134,17 @@ function calculateMortgage() {
     const rate = parseFloat(inputRate.value)  /100;
     const mortgageType = document.querySelector('input[name="radio-type"]:checked');
 
-    if(isNaN(principalAmount) || principalAmount <= 0) {
-        validateInputs();
-    }
-
-    if(isNaN(duration) || duration <= 0) {
-        validateInputs();
-    }
-
-    if(isNaN(rate) || rate <= 0) {
-        validateInputs();
-    }
-
-    if(mortgageType === null) { 
-        validateInputs();
-    }
-
-     //* Check if any input field is empty after initial validation and stop calculations
+     //* Check if any input field is empty and stop calculations
     if (inputAmount.value.trim() === '' || inputDuration.value.trim() === '' || inputRate.value.trim() === '' || mortgageType === null) {
-        return;  // Exit the function to prevent further calculations
+        return;  //* Exit the function to prevent further calculations
     }
+
+    // * Validate Input Ranges
 
     //* Validate inputAmount range
     const amountParent = document.querySelector('.user-amount');
     const amountRangeError = amountParent.querySelector('.error-message');
     if (principalAmount < 10000 || principalAmount > 3000000 ||isNaN(principalAmount) ) {
-        // Display an error message or set an error state for inputAmount
         setAmountError();
         amountRangeError.textContent = 'Amount should be between £10,000 and £3,000,000';
     } else {
@@ -157,7 +156,6 @@ function calculateMortgage() {
     const durationParent = document.querySelector('.duration');
     const durationRangeError = durationParent.querySelector('.error-message');
     if (duration < 1 || duration > 40 || isNaN(duration)) {
-        // Display an error message or set an error state for inputDuration
         setDurationError();
         durationRangeError.textContent = 'Duration should be between 1 and 40 years';
     } else {
@@ -169,7 +167,6 @@ function calculateMortgage() {
     const rateParent = document.querySelector('.rate');
     const rateRangeError = rateParent.querySelector('.error-message');
     if ( (rate < 1/100) || (rate > 20/100) || isNaN(rate)) {
-        // Display an error message or set an error state for inputRate
         setRateError();
         rateRangeError.textContent = 'Rate should be between 1% and 20%';
     } else {
@@ -177,12 +174,12 @@ function calculateMortgage() {
         rateRangeError.textContent = '';
     }
 
-    // Only proceed with mortgage calculation if all inputs are valid
-if (isNaN(principalAmount) || isNaN(duration) || isNaN(rate) || principalAmount < 10000 || principalAmount > 3000000 || duration < 1 || duration > 40 || rate < 1 || rate > 20) {
-    // Handle invalid inputs, display error messages, or prevent further calculation
-    return;
-}
+    //* Runs checks and only proceeds with mortgage calculation if all inputs are valid
+    if (isNaN(principalAmount) || isNaN(duration) || isNaN(rate) || principalAmount < 10000 || principalAmount > 3000000 || duration < 1 || duration > 40 || (rate < 1/100) || (rate > 20/100) ) {
+        return;
+    }
 
+    // * Calculate Mortgage -- Monthly Payment & Total Repayment
     let monthlyPayment = 0;
     let totalRepayment = 0;
 
@@ -191,7 +188,6 @@ if (isNaN(principalAmount) || isNaN(duration) || isNaN(rate) || principalAmount 
         const n = duration * 12;
 
         // monthlyPayment = (principalAmount * monthlyRate) / (1 - Math.pow((1 + monthlyRate, -n));
-
         monthlyPayment = principalAmount * ( monthlyRate *((1 + monthlyRate)**n) ) / ( ((1 + monthlyRate)**n) - 1 );
 
         totalRepayment = monthlyPayment * n;
@@ -206,9 +202,9 @@ if (isNaN(principalAmount) || isNaN(duration) || isNaN(rate) || principalAmount 
 
     document.getElementById('total-repayment-amount').innerText = `${totalRepayment.toFixed(2)}`;
 
-}
+};
 
-//* Checks for empty values and sets or removes the error states
+//* Handles Input Errors -- Checks for empty values and sets or removes the error states
 // * Parameters -- value reps the Value of the input field, setError reps the Error Functions and removeError reps the Remove Error Functions
 function handleInputError (value, setError, removeError) {
     if (value === '') {
@@ -217,7 +213,7 @@ function handleInputError (value, setError, removeError) {
     else {
         removeError();
     }
-}
+};
 
 // * Function to validate the inputs, set and remove error states
 function validateInputs () {
@@ -268,7 +264,7 @@ function validateInputs () {
     //     removeRateError();
     // }
 
-}
+};
 
 //*  Display Error Messages
 function displayErrorMessages () {
@@ -297,30 +293,31 @@ function displayErrorMessages () {
             radioContainer.classList.remove('error-vibrate');
         }
     });
-}
 
-//* Functions for Error States
+};
+
+//* Functions for Setting Error States
 
 //* Amount Error States
 function setAmountError(){
     currencySymbol.classList.add('error-terms');
     inputAmount.classList.add('error-input');
     amountContainer.classList.add('error-vibrate');
-}
+};
 
 //* Duration Error States
 function setDurationError(){
     durationTerm.classList.add('error-terms');
     inputDuration.classList.add('error-input');
     durationContainer.classList.add('error-vibrate');
-}
+};
 
 //* Rate Error States
 function setRateError(){
     rateTerm.classList.add('error-terms');
     inputRate.classList.add('error-input');
     rateContainer.classList.add('error-vibrate');
-}
+};
 
 // * Functions For Removing Error States
 
@@ -329,21 +326,21 @@ function removeAmountError(){
     currencySymbol.classList.remove('error-terms');
     inputAmount.classList.remove('error-input');
     amountContainer.classList.remove('error-vibrate');
-}
+};
 
 // * Remove Duration Error State
 function removeDurationError(){
     durationTerm.classList.remove('error-terms');
     inputDuration.classList.remove('error-input');
     durationContainer.classList.remove('error-vibrate');
-}
+};
 
 // * Remove Rate Error State
 function removeRateError(){
     rateTerm.classList.remove('error-terms');
     inputRate.classList.remove('error-input');
     rateContainer.classList.remove('error-vibrate');
-}
+};
 
 //* Moving cursor to next input field on hitting enter  
 let inputs = document.querySelectorAll("input,select");
@@ -357,8 +354,8 @@ for ( let i = 0 ; i < inputs.length; i++ ) {
             }
             nextInput[0].focus();
         }
-    })
-}
+    });
+};
 
 //* Add a comma to numbers while typing
 // inputAmount.addEventListener("keyup", ()=>{
