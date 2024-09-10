@@ -30,11 +30,20 @@ const calculateMortgageBtn = document.getElementById('calculate-mortgage');
 //* Reset the form
 clearAll.addEventListener('click', () => {
     form.reset();
-     // Reset radio input styles
+
+     //*  Reset radio input styles
     radioInputs.forEach(input => {
         input.parentElement.style.border = '1px solid var(--slate-four)';
         input.parentElement.style.backgroundColor = 'var(--neutral)';
     });
+
+    //* Reset monthly repayment amount and total repayment amount
+    document.getElementById('monthly-repayment-amount').innerText = '0';
+    document.getElementById('total-repayment-amount').innerText = '0';
+
+    //* Reset to default result 
+    document.querySelector('.default-result').classList.remove('hide');
+    document.querySelector('.full-results').classList.remove('show');
 });
 
 //* Active states of the input fields
