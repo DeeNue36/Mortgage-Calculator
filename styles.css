@@ -338,15 +338,6 @@ input[type="radio"]:checked {
     padding-left: 10px;
 }
 
-/** Classes for toggling between default result & full results */
-.hide {
-    display: none;
-}
-
-.show {
-    display: block;
-}
-
 
 /** Mortgage Results Section Styling */
 
@@ -462,5 +453,14 @@ hr {
 
 span#total-repayment-amount{
     margin-left: -16px;
+}
+
+/** Classes for toggling between default result & full results */
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }
 
