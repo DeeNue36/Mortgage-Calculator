@@ -44,6 +44,18 @@ clearAll.addEventListener('click', () => {
     //* Reset to default result 
     document.querySelector('.default-result').classList.remove('hide');
     document.querySelector('.full-results').classList.remove('show');
+
+    //* Remove error states
+    removeAmountError();
+    removeDurationError();
+    removeRateError();
+
+    //* Remove error messages
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(errorMsg => {
+        errorMsg.textContent = '';
+    });
+    
 });
 
 //* Active states of the input fields
@@ -296,6 +308,9 @@ function displayErrorMessages () {
         else if (inputField.type === 'radio' && !document.querySelector(`input[name=${inputField.name}]:checked`) ) {
             errorMsg.textContent = errorMessage || 'This field is required';
             radioContainer.classList.add('error-vibrate');
+            setTimeout(function() {
+                radioContainer.classList.remove('error-vibrate');
+            }, 4000);
         }
         else {
             errorMsg.textContent = '';
@@ -312,6 +327,9 @@ function setAmountError(){
     currencySymbol.classList.add('error-terms');
     inputAmount.classList.add('error-input');
     amountContainer.classList.add('error-vibrate');
+    setTimeout(function() {
+        amountContainer.classList.remove('error-vibrate');
+    }, 4000);
 };
 
 //* Duration Error States
@@ -319,6 +337,9 @@ function setDurationError(){
     durationTerm.classList.add('error-terms');
     inputDuration.classList.add('error-input');
     durationContainer.classList.add('error-vibrate');
+    setTimeout(function() {
+        durationContainer.classList.remove('error-vibrate');
+    }, 4000);
 };
 
 //* Rate Error States
@@ -326,6 +347,9 @@ function setRateError(){
     rateTerm.classList.add('error-terms');
     inputRate.classList.add('error-input');
     rateContainer.classList.add('error-vibrate');
+    setTimeout(function() {
+        rateContainer.classList.remove('error-vibrate');
+    }, 4000);
 };
 
 // * Functions For Removing Error States
