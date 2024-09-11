@@ -31,6 +31,7 @@ body {
     align-items: center;
     height: 100vh;
     width: 100vw;
+    overflow-x: hidden;
 }
 
 .container {
@@ -40,7 +41,6 @@ body {
     /* ? display:  grid;   */
     /* ? grid-template-columns:  2fr 2fr; */
     width:  84vw;
-    height:  84vh;
     border-radius:  16px;
 }
 
@@ -48,8 +48,10 @@ body {
 
 /** Parent Container */
 .calculator {
+    background-color: var(--neutral);
     width:  50%;    /** Comment out or Delete this to use 'display:grid' */
     padding:  25px;
+    border-radius:  16px;
 }
 
 /** Form Header and Clear All Button Styling */
@@ -462,5 +464,112 @@ span#total-repayment-amount{
 
 .show {
     display: block;
+}
+
+/** Media Queries */
+
+@media screen and (max-width: 839.99px) {
+    .container{
+        width:  92vw;
+    }
+}
+
+@media screen and (max-width: 768.99px) {
+    .container{
+        width:  96vw;
+        /* height:  50%; */
+    }
+}
+
+@media screen and (max-width: 733.99px) {
+    .container{
+        width:  98.8vw;
+    }
+}
+
+@media screen and (max-width: 712.99px) {
+    .header {
+        font-size:  1.25em;
+    }
+}
+
+@media screen and (max-width: 660.99px) {
+    .input-duration {
+        padding: 0 12px;
+    }
+}
+
+@media screen and (max-width: 630.99px) {
+    .calculator {
+        padding:  20px;
+    }
+}
+
+@media screen and (max-width: 600.99px) {
+    .calculator {
+        padding:  15px;
+    }
+}
+
+@media screen and (max-width: 590.99px) {
+    body {
+        width: 100%;
+    }
+    .container {
+        flex-direction: column;
+        width: 100vw;
+        align-self:  normal;
+        border-radius: 0;
+    }
+    .calculator {
+        padding: 40px 40px 20px;
+        width: 100%;
+        border-radius: 0;
+    }
+    .results {
+        width: 100%;
+        border-radius: 0;
+    }
+    .duration-and-rate {
+        flex-direction: column;
+        gap: 0;
+    }
+    .duration, 
+    .rate,
+    .calculate-mortgage {
+        width: 100%;
+    }
+    .user-amount,
+    .duration,
+    .rate {
+        margin-bottom: 20px;
+    }
+    .calculate-mortgage {
+        margin-top: 20px;
+    }
+    .default-result {
+        padding: 80px;
+    }
+    .full-results{
+        padding: 50px;
+    }
+}
+
+@media screen and (max-width: 390.99px) {
+    .default-result {
+        padding:  40px;
+    }
+    .full-results {
+        padding: 40px;
+    }
+
+}
+
+@media screen and (max-width: 350.99px) {
+    .calculator, 
+    .default-result,
+    .full-results {
+        padding: 20px;
+    }
 }
 
