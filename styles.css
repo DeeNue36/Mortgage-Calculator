@@ -268,7 +268,7 @@ input[type="radio"]:checked {
     font-weight: 600;
     font-size: var(--p-font-size);
     padding-left: 10px;
-    text-align: center;
+    width: 100%;
 }
 
 /** Form Active State  */
@@ -378,6 +378,7 @@ input[type="radio"]:checked {
 .full-results {
     display: none;
     padding: 25px;
+    height: 482px;  /** To match the height of default result */
 }
 
 /** Header & Text */
@@ -398,7 +399,7 @@ input[type="radio"]:checked {
     background-color: #0E2431;
     border-top: 4px solid var(--primary-color-one);
     border-radius: 10px;
-    padding: 20px;
+    padding: 25px 25px 40px;
 }
 
 .computed-results span:nth-child(3n+1) {
@@ -477,7 +478,6 @@ span#total-repayment-amount{
 @media screen and (max-width: 768.99px) {
     .container{
         width:  96vw;
-        /* height:  50%; */
     }
 }
 
