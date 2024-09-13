@@ -44,9 +44,11 @@ body {
     border-radius:  16px;
 }
 
+
 /** Mortgage Calculator Section Styling */
 
 /** Parent Container */
+
 .calculator {
     background-color: var(--neutral);
     width:  50%;    /** Comment out or Delete this to use 'display:grid' */
@@ -55,6 +57,7 @@ body {
 }
 
 /** Form Header and Clear All Button Styling */
+
 .heading {
     display: flex;
     justify-content:  space-between;
@@ -70,6 +73,7 @@ body {
 }
 
 /** Mortgage Form Styling  */
+
 .form {
     height: 100%;
     padding: 24px 0 32px;
@@ -211,7 +215,8 @@ input[type = number] {
     width: 55%;
 }
 
-/** Mortgage Radio Inputs Styling */
+/** Radio Inputs Styling */
+
 .repayment {
     margin-bottom: 8px;
 }
@@ -253,12 +258,14 @@ input[type="radio"] {
 }
 
 /** appearance for checked radio button */
+
 input[type="radio"]:checked {
     border: 1px solid var(--primary-color-one);
     background-color: var(--primary-color-one);
 }
 
 /** optional styles, I'm using this for centering radio buttons and label */
+
 .flex {
     display: flex;
     align-items: center;
@@ -272,12 +279,14 @@ input[type="radio"]:checked {
 }
 
 /** Form Active State  */
+
 .active-state {
     background-color: var(--primary-color-one);
     border:  1px solid var(--primary-color-one);
 }
 
 /** Error States Styling */
+
 .error-terms {
     background-color: var(--primary-color-two);
     border: 1px solid var(--primary-color-two);
@@ -312,6 +321,7 @@ input[type="radio"]:checked {
 
 
 /** Calculate Mortgage Button Styling */
+
 .calculate-mortgage {
     outline: none;
     border: none;
@@ -344,6 +354,7 @@ input[type="radio"]:checked {
 /** Mortgage Results Section Styling */
 
 /**  Parent  Container */
+
 .results {
     width: 50%;   /** Comment out or Delete this to use 'display:grid' */
     background-color: var(--slate-five);
@@ -353,6 +364,7 @@ input[type="radio"]:checked {
 }
 
 /** Default Result Styling */
+
 .default-result {
     display: grid;
     place-items: center;
@@ -375,6 +387,7 @@ input[type="radio"]:checked {
 }
 
 /** Full Results Styling */
+
 .full-results {
     display: none;
     padding: 25px;
@@ -382,6 +395,7 @@ input[type="radio"]:checked {
 }
 
 /** Header & Text */
+
 .full-results-header {
     color: var(--neutral);
     margin-bottom: 8px;
@@ -395,6 +409,7 @@ input[type="radio"]:checked {
 }
 
 /** Computed Results Styling -- Mortgage Results being displayed to the user */
+
 .computed-results {
     background-color: #0E2431;
     border-top: 4px solid var(--primary-color-one);
@@ -466,6 +481,7 @@ span#total-repayment-amount{
 .show {
     display: block;
 }
+
 
 /** Media Queries */
 

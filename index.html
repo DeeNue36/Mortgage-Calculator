@@ -23,7 +23,7 @@
 
             <!-- * Form  -->
             <form class="form" id="form" action="/" autocomplete="on">
-                <!--* Mortgage Amount -->
+                <!--* Principal/ Money borrowed/ Mortgage Amount -->
                 <div class="user-amount">
                     <label for="input-amount" class="input-header">Mortgage Amount</label> 
                     <br>
@@ -38,6 +38,7 @@
 
                 <!--* Mortgage Duration(Years) & Rate(%) -->
                 <div class="duration-and-rate">
+                    <!--* Time OR Duration (years)-->
                     <div class="duration">
                         <label for="input-duration" class="input-header">Mortgage Term</label>
                         <br>
@@ -48,6 +49,7 @@
                         <span class="error-message"></span>
                     </div>
 
+                    <!--* Rate OR Interest (%) -->
                     <div class="rate">
                         <label for="input-rate" class="input-header">Interest Rate</label>
                         <br>
@@ -59,15 +61,17 @@
                     </div>
                 </div>
 
-                <!--* Mortgage Repayment Type -->
+                <!--* Mortgage Payment Types -->
                 <div class="mortgage-type">
                     <header class="mortgage-type-header">Mortgage Type</header>
 
+                    <!--* Repayment -->
                     <div class="repayment flex">
                         <input type="radio" value="repayment" name="radio-type" id="repayment" class="radio-input" tabindex="4">
                         <label for="repayment" class="radio-label">Repayment</label>
                     </div>
 
+                    <!--* Interest-only -->
                     <div class="interest-only flex">
                         <input type="radio" value="interest-only" name="radio-type" id="interest-only" class="radio-input" tabindex="5">
                         <label for="interest-only" class="radio-label">Interest Only</label>
@@ -75,6 +79,7 @@
                     <span class="error-message"></span>
                 </div>
 
+                <!--* Calculate Button -->
                 <button type="submit" class="calculate-mortgage" id="calculate-mortgage" tabindex="6">
                     <img src="assets/images/icon-calculator.svg" alt="mortgage-calculator">
                     <span> Calculate Repayments </span>
@@ -84,7 +89,7 @@
 
         <!--* Mortgage Results section -->
         <section class="results">
-            <!--* Default Result State -- displayed by default -->
+            <!--* Default Result -- displayed by default -->
             <div class="default-result">
                 <img src="assets/images/illustration-empty.svg" alt="Empty-result-image">
                 <h2 class="default-result-header">
@@ -95,7 +100,7 @@
                 </p>
             </div>
 
-            <!--* Full Results State -- displayed when user clicks on calculate button -->
+            <!--* Full Results -- displayed when user clicks on calculate button -->
             <div class="full-results">
                 <h2 class="full-results-header">
                     Your Results
@@ -125,7 +130,6 @@
                         <span id="total-repayment-amount">0</span>
                     </h4>
                 </div>
-
             </div>
         </section>
     </main>
