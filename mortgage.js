@@ -223,10 +223,17 @@ function calculateMortgage() {
 
     document.getElementById('total-repayment-amount').innerText = `${totalRepayment.toFixed(2)}`;
 
+    //* Announce the results to screen readers
+    const resultElements = document.querySelectorAll('.full-results');
+    resultElements.forEach((element) => {
+        element.setAttribute('role', 'alert');
+        element.setAttribute('aria-live', 'polite');
+    });
+
 };
 
-//* Handles Input Errors -- Checks for empty values and sets or removes the error states
-// * Parameters -- value reps the Value of the input field, setError reps the Error Functions and removeError reps the Remove Error Functions
+//*Utility Function - Handles Input Errors -- Checks for empty values and sets or removes the error states
+// * Parameters -- "value" takes the value of the input field, "setError" represents the error functions and "removeError" represents the remove error functions
 function handleInputError (value, setError, removeError) {
     if (value === '') {
         setError();
@@ -236,7 +243,7 @@ function handleInputError (value, setError, removeError) {
     }
 };
 
-// * Function to validate the inputs, set and remove error states
+//*Utility Function - Function to validate the inputs, set and remove error states
 function validateInputs () {
     const amountValue = inputAmount.value.trim();
     const durationValue = inputDuration.value.trim();
@@ -287,7 +294,7 @@ function validateInputs () {
 
 };
 
-//*  Display Error Messages
+//*Utility Function - Display Error Messages
 function displayErrorMessages () {
     const errorMessages = document.querySelectorAll('.error-message');
     errorMessages.forEach(errorMsg => {
