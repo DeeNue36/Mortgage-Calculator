@@ -61,20 +61,23 @@ clearAll.addEventListener('click', () => {
 //* Active states of the input fields
 function activeStates() {
     inputAmount.addEventListener ('focus',  () => {
-        removeClasses(); // Remove active class from form before adding an active state
-        currencySymbol.classList.add('active-state');
+        removeClasses(); //* Remove active class from form before adding an active state
+        amountContainer.classList.add('active-state');
+        currencySymbol.classList.add('active-state-term');
         removeAmountError();
     });
     
     inputDuration.addEventListener ('focus',  () => {
-        removeClasses(); // Remove active class from form before adding an active state
-        durationTerm.classList.add('active-state');
+        removeClasses();
+        durationContainer.classList.add('active-state');
+        durationTerm.classList.add('active-state-term');
         removeDurationError();
     });
     
     inputRate.addEventListener ('focus',  () => {
-        removeClasses(); // Remove active class from form before adding an active state
-        rateTerm.classList.add('active-state');
+        removeClasses();
+        rateContainer.classList.add('active-state');
+        rateTerm.classList.add('active-state-term');
         removeRateError();
     });
 }
@@ -87,23 +90,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //* Function to remove active classes
 function removeClasses() {
-    currencySymbol.classList.remove('active-state');
-    durationTerm.classList.remove('active-state');
-    rateTerm.classList.remove('active-state');
-    // if (inputAmount.classList.contains('input-amount')) {
-    //     currencySymbol.classList.remove('active-state');
-    // }
-    // if (inputDuration.classList.contains('input-duration')) {
-    //     durationTerm.classList.remove('active-state');
-    // }
-    // if (inputRate.classList.contains('input-rate')) {
-    //     rateTerm.classList.remove('active-state');
-    // }
+    //* Removes the active states from the container of the input fields
+    amountContainer.classList.remove('active-state');
+    durationContainer.classList.remove('active-state');
+    rateContainer.classList.remove('active-state');
+    
+    //* Removes the active states from the terms of the input fields
+    currencySymbol.classList.remove('active-state-term');
+    durationTerm.classList.remove('active-state-term');
+    rateTerm.classList.remove('active-state-term');
 }
 
 //* Click event listener on body to remove classes
 document.body.addEventListener('click', (event) => {
-    // Checks if the click is not on any of the form elements
+    //* Checks if the click is not on any of the form elements
     if (!event.target.closest('#input-amount') &&
         !event.target.closest('#input-duration') &&
         !event.target.closest('#input-rate')) {
