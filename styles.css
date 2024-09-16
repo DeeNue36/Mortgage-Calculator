@@ -51,7 +51,7 @@ body {
 
 .calculator {
     background-color: var(--neutral);
-    width:  50%;    /** Comment out or Delete this to use 'display:grid' */
+    width:  50%;    /** Comment out or delete this to use 'display:grid' */
     padding:  25px;
     border-radius:  16px;
 }
@@ -101,10 +101,10 @@ body {
         cursor: pointer;
     }
     .currency-symbol{
-        border-right: none;
+        border-right: 0;
     }
     .input-amount{
-        border-left: none;
+        border-left: 0;
     }
 }
 
@@ -113,7 +113,7 @@ body {
     background-color:  var(--slate-one);
     padding: 5px 10px;
     border:  1px solid var(--slate-four);
-    border-right: none;
+    border-right: 0;
     border-top-left-radius:  5px;
     border-bottom-left-radius:  5px;
 }
@@ -125,7 +125,7 @@ body {
 .input-amount {
     width: 100%;
     border:  1px solid var(--slate-four);
-    border-left: none;
+    border-left: 0;
     border-top-right-radius:  5px;
     border-bottom-right-radius:  5px;
     font-family:  inherit;
@@ -174,7 +174,7 @@ input[type = number] {
     width: 100%;
     height: 34px;
     border: 1px solid var(--slate-four);
-    border-right: none;
+    border-right: 0;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     padding:  0 16px;
@@ -190,10 +190,10 @@ input[type = number] {
         cursor:  pointer;
     }
     .input-duration, .input-rate{
-        border-right: none;
+        border-right: 0;
     }
     .term{
-        border-left: none;
+        border-left: 0;
     }
 }
 
@@ -206,7 +206,7 @@ input[type = number] {
     background-color: var(--slate-one);
     padding: 5px 10px;
     border: 1px solid var(--slate-four);
-    border-left: none;
+    border-left: 0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
