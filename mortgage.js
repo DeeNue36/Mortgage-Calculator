@@ -37,11 +37,11 @@ clearAll.addEventListener('click', () => {
         input.parentElement.style.backgroundColor = 'var(--neutral)';
     });
 
-    //* Reset monthly repayment amount and total repayment amount
+    //* Reset results - monthly repayment amount and total repayment amount
     document.getElementById('monthly-repayment-amount').innerText = '0';
     document.getElementById('total-repayment-amount').innerText = '0';
 
-    //* Reset to default result 
+    //* Reset to default result state
     document.querySelector('.default-result').classList.remove('hide');
     document.querySelector('.full-results').classList.remove('show');
 
@@ -61,21 +61,21 @@ clearAll.addEventListener('click', () => {
 //* Active states of the input fields
 function activeStates() {
     inputAmount.addEventListener ('focus',  () => {
-        removeClasses(); //* Remove active class from form before adding an active state
+        removeActiveStates(); //* Remove active class from form before adding an active state
         amountContainer.classList.add('active-state');
         currencySymbol.classList.add('active-state-term');
         removeAmountError();
     });
     
     inputDuration.addEventListener ('focus',  () => {
-        removeClasses();
+        removeActiveStates();
         durationContainer.classList.add('active-state');
         durationTerm.classList.add('active-state-term');
         removeDurationError();
     });
     
     inputRate.addEventListener ('focus',  () => {
-        removeClasses();
+        removeActiveStates();
         rateContainer.classList.add('active-state');
         rateTerm.classList.add('active-state-term');
         removeRateError();
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //* Function to remove active classes
-function removeClasses() {
+function removeActiveStates() {
     //* Removes the active states from the container of the input fields
     amountContainer.classList.remove('active-state');
     durationContainer.classList.remove('active-state');
@@ -107,7 +107,7 @@ document.body.addEventListener('click', (event) => {
     if (!event.target.closest('#input-amount') &&
         !event.target.closest('#input-duration') &&
         !event.target.closest('#input-rate')) {
-        removeClasses();
+        removeActiveStates();
     }
 });
 
@@ -138,8 +138,6 @@ calculateMortgageBtn.addEventListener('click', (event) => {
     if (inputAmount.value.trim() !== '' && inputDuration.value.trim() !== '' && inputRate.value.trim() !== '' && document.querySelector('input[name="radio-type"]:checked')) {
 
         //* Hide the default result class and display the full result class
-        // document.querySelector('.default-result').style.display = 'none';
-        // document.querySelector('.full-results').style.display = 'block';
         document.querySelector('.default-result').classList.add('hide');
         document.querySelector('.full-results').classList.add('show');
 
@@ -331,8 +329,8 @@ function displayErrorMessages () {
 
 //* Amount Error States
 function setAmountError(){
-    currencySymbol.classList.add('error-terms');
-    inputAmount.classList.add('error-input');
+    currencySymbol.classList.add('error-currency');
+    amountContainer.classList.add('error-input');
     amountContainer.classList.add('error-vibrate');
     setTimeout(function() {
         amountContainer.classList.remove('error-vibrate');
@@ -342,7 +340,7 @@ function setAmountError(){
 //* Duration Error States
 function setDurationError(){
     durationTerm.classList.add('error-terms');
-    inputDuration.classList.add('error-input');
+    durationContainer.classList.add('error-input');
     durationContainer.classList.add('error-vibrate');
     setTimeout(function() {
         durationContainer.classList.remove('error-vibrate');
@@ -352,7 +350,7 @@ function setDurationError(){
 //* Rate Error States
 function setRateError(){
     rateTerm.classList.add('error-terms');
-    inputRate.classList.add('error-input');
+    rateContainer.classList.add('error-input');
     rateContainer.classList.add('error-vibrate');
     setTimeout(function() {
         rateContainer.classList.remove('error-vibrate');
@@ -363,22 +361,22 @@ function setRateError(){
 
 // * Remove Amount Error State
 function removeAmountError(){
-    currencySymbol.classList.remove('error-terms');
-    inputAmount.classList.remove('error-input');
+    currencySymbol.classList.remove('error-currency');
+    amountContainer.classList.remove('error-input');
     amountContainer.classList.remove('error-vibrate');
 };
 
 // * Remove Duration Error State
 function removeDurationError(){
     durationTerm.classList.remove('error-terms');
-    inputDuration.classList.remove('error-input');
+    durationContainer.classList.remove('error-input');
     durationContainer.classList.remove('error-vibrate');
 };
 
 // * Remove Rate Error State
 function removeRateError(){
     rateTerm.classList.remove('error-terms');
-    inputRate.classList.remove('error-input');
+    rateContainer.classList.remove('error-input');
     rateContainer.classList.remove('error-vibrate');
 };
 
