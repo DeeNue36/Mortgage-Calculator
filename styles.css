@@ -102,7 +102,7 @@ body {
 }
 
 .currency-symbol {
-    height: -webkit-fill-available;
+    height: 32px;
     background-color:  var(--slate-one);
     padding: 5px 10px;
     border: none;
@@ -193,7 +193,7 @@ input[type = number] {
 } */
 
 .term {
-    height: -webkit-fill-available;
+    height: 32px;
     background-color: var(--slate-one);
     padding: 5px 10px;
     /* border: 1px solid var(--slate-four);
