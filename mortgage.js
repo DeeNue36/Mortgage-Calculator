@@ -31,7 +31,7 @@ const calculateMortgageBtn = document.getElementById('calculate-mortgage');
 clearAll.addEventListener('click', () => {
     form.reset();
 
-     //*  Reset radio input styles
+    //*  Reset radio input styles
     radioInputs.forEach(input => {
         input.parentElement.style.border = '1px solid var(--slate-four)';
         input.parentElement.style.backgroundColor = 'var(--neutral)';
