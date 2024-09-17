@@ -217,9 +217,9 @@ function calculateMortgage() {
         totalRepayment = monthlyPayment * duration * 12;
     }
 
-    document.getElementById('monthly-repayment-amount').innerText = `${monthlyPayment.toFixed(2)}`;
+    document.getElementById('monthly-repayment-amount').innerText = `${monthlyPayment.toFixed(2).toLocaleString()}`;
 
-    document.getElementById('total-repayment-amount').innerText = `${totalRepayment.toFixed(2)}`;
+    document.getElementById('total-repayment-amount').innerText = `${totalRepayment.toFixed(2).toLocaleString()}`;
 
     //* Announce the results to screen readers
     const resultElements = document.querySelectorAll('.full-results');
