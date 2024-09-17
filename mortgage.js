@@ -217,9 +217,9 @@ function calculateMortgage() {
         totalRepayment = monthlyPayment * duration * 12;
     }
 
-    document.getElementById('monthly-repayment-amount').innerText = `${monthlyPayment.toFixed(2).toLocaleString()}`;
+    document.getElementById('monthly-repayment-amount').innerText = `${addCommas(monthlyPayment.toFixed(2))}`;
 
-    document.getElementById('total-repayment-amount').innerText = `${totalRepayment.toFixed(2).toLocaleString()}`;
+    document.getElementById('total-repayment-amount').innerText = `${totalRepayment.toFixed(2)}`;
 
     //* Announce the results to screen readers
     const resultElements = document.querySelectorAll('.full-results');
@@ -229,6 +229,12 @@ function calculateMortgage() {
     });
 
 };
+
+
+//*Utility Function - Adds commas to large numbers
+function addCommas(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 //*Utility Function - Handles Input Errors -- Checks for empty values and sets or removes the error states
 // * Parameters -- "value" takes the value of the input field, "setError" represents the error functions and "removeError" represents the remove error functions
