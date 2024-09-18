@@ -219,7 +219,7 @@ function calculateMortgage() {
 
     document.getElementById('monthly-repayment-amount').innerText = `${addCommas(monthlyPayment.toFixed(2))}`;
 
-    document.getElementById('total-repayment-amount').innerText = `${totalRepayment.toFixed(2)}`;
+    document.getElementById('total-repayment-amount').innerText = `${addCommas(totalRepayment.toFixed(2))}`;
 
     //* Announce the results to screen readers
     const resultElements = document.querySelectorAll('.full-results');
@@ -233,6 +233,8 @@ function calculateMortgage() {
 
 //*Utility Function - Adds commas to large numbers
 function addCommas(n) {
+    //* \B matches a non-word boundary
+    //* (?=(\d{3})+(?!\d)) is a positive lookahead that matches if the current position is followed by one or more groups of three digits, and the g flag at the end makes the replacement global.
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
