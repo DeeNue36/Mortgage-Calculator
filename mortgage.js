@@ -147,6 +147,7 @@ calculateMortgageBtn.addEventListener('click', (event) => {
 
 });
 
+//* Function to calculate the mortgage 
 function calculateMortgage() {
     const principalAmount = parseFloat(inputAmount.value);
     const duration = parseFloat(inputDuration.value);
@@ -231,15 +232,17 @@ function calculateMortgage() {
 };
 
 
-//*Utility Function - Adds commas to large numbers
+//* Utility Function - Adds commas to large numbers
 function addCommas(n) {
     //* \B matches a non-word boundary
     //* (?=(\d{3})+(?!\d)) is a positive lookahead that matches if the current position is followed by one or more groups of three digits, and the g flag at the end makes the replacement global.
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-//*Utility Function - Handles Input Errors -- Checks for empty values and sets or removes the error states
-// * Parameters -- "value" takes the value of the input field, "setError" represents the error functions and "removeError" represents the remove error functions
+/** 
+    **Utility Function - Handles Input Errors -- Checks for empty values and sets or removes the error states
+    **Parameters -- "value" takes the value of the input field, "setError" represents the error functions and "removeError" represents the remove error functions 
+*/
 function handleInputError (value, setError, removeError) {
     if (value === '') {
         setError();
@@ -249,7 +252,7 @@ function handleInputError (value, setError, removeError) {
     }
 };
 
-//*Utility Function - Function to validate the inputs, set and remove error states
+//* Utility Function - Function to validate the inputs, set and remove error states
 function validateInputs () {
     const amountValue = inputAmount.value.trim();
     const durationValue = inputDuration.value.trim();
@@ -300,7 +303,7 @@ function validateInputs () {
 
 };
 
-//*Utility Function - Display Error Messages
+//* Utility Function - Display Error Messages
 function displayErrorMessages () {
     const errorMessages = document.querySelectorAll('.error-message');
     errorMessages.forEach(errorMsg => {
